@@ -105,6 +105,17 @@
           </li>
           @endcan
 
+          @can('keuangan-show')
+          <li>
+            <a href="{{ route('keuangan.index') }}" class="nav-link {{ request()->segment(2) == 'user' ? 'active' : null }}">
+              <i class="nav-icon fas fa-user-cog"></i>
+              <p>
+                Keuangan
+              </p>
+            </a>
+          </li>
+          @endcan
+          
           <li class="nav-item">
             <a class="nav-link" href="{{ route('logout') }}"
                onclick="event.preventDefault();
