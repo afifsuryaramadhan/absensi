@@ -17,10 +17,10 @@ class AbsensiController extends Controller
     {
         $user = auth()->user();
         $absensi = Absensi::where('id_user', $user->id)
-                            ->where('is_confirmed', 1)
-                            ->with('kegiatan')
-                            ->orderBy('updated_at', 'DESC')
-                            ->get();
+            ->where('is_confirmed', 1)
+            ->with('kegiatan')
+            ->orderBy('updated_at', 'DESC')
+            ->get();
 
         return view('absensi.index', compact('absensi'));
     }
@@ -28,16 +28,16 @@ class AbsensiController extends Controller
     public function submit(Request $request)
     {
         $request->validate([
-            'foto' => 'required|mimes:jpg,jpeg,png' 
+            'foto' => 'required|mimes:jpg,jpeg,png'
         ]);
 
-        $filename = \Str::random(9).'_'.$request->foto->getClientOriginalName();
+        $filename = \Str::random(9) . '_' . $request->foto->getClientOriginalName();
         $path = Storage::putFileAs('public/absensi', $request->foto, $filename);
 
 
         try {
             $absensi = new Absensi;
-            
+
             $absensi->foto = $path;
             $absensi->is_confirmed = 0;
             $absensi->id_user = auth()->user()->id;
@@ -50,7 +50,6 @@ class AbsensiController extends Controller
         }
 
         return redirect()->route('absensi.index')->with('message', '<div class="alert alert-success my-3">Absensi berhasil, menunggu konfirmasi ketua atau admin</div>');
-
     }
 
     public function list()
@@ -59,15 +58,15 @@ class AbsensiController extends Controller
         $user = auth()->user();
         $role = auth()->user()->getRoleNames()->first();
 
-        if ( strtolower($role) == 'ketua') {
+        if (strtolower($role) == 'ketua') {
             $absensi = Absensi::where('id_univ', $user->id_univ)
-                                ->with('kegiatan','user')
-                                ->orderBy('updated_at','DESC')
-                                ->get();
+                ->with('kegiatan', 'user')
+                ->orderBy('updated_at', 'DESC')
+                ->get();
         } else {
-            $absensi = Absensi::with('kegiatan','user')
-                        ->orderBy('updated_at','DESC')
-                        ->get();
+            $absensi = Absensi::with('kegiatan', 'user')
+                ->orderBy('updated_at', 'DESC')
+                ->get();
         }
         return view('absensi.list-absensi', compact('absensi'));
     }
@@ -75,41 +74,41 @@ class AbsensiController extends Controller
     public function approve($id)
     {
         $absensi = Absensi::findOrFail($id);
-        $absensi->update(['is_confirmed'=>1]);
-        
-        return redirect()->route('manajemen.absensi.index')->with('message', '<div class="alert alert-success my-3">Absensi berhasil dikonfirmasi</div>');        
+        $absensi->update(['is_confirmed' => 1]);
+
+        return redirect()->route('manajemen.absensi.index')->with('message', '<div class="alert alert-success my-3">Absensi berhasil dikonfirmasi</div>');
     }
 
     public function eksport()
-    {        
+    {
         $user = auth()->user();
-        if ( $user->hasRole('admin') ) {
-            $absensi = User::whereHas('roles', function($q) { 
-                            $q->whereName('anggota'); 
-                        })->withCount('absensi as kehadiran')
-                        ->with([
-                            'univ',
-                            'absensi' => function ($q) {
-                                return $q->where('is_confirmed', 1)->with('kegiatan');
-                            }
-                        ])->get();
+        if ($user->hasRole('admin')) {
+            $absensi = User::whereHas('roles', function ($q) {
+                $q->whereName('anggota')->orWhere('name', 'ketua')->orWhere('name', 'sekretaris');
+            })->withCount('absensi as kehadiran')
+                ->with([
+                    'univ',
+                    'absensi' => function ($q) {
+                        return $q->where('is_confirmed', 1)->with('kegiatan');
+                    }
+                ])->get();
         } else {
-            $absensi = User::whereHas('roles', function($q) { 
-                            $q->whereName('anggota'); 
-                        })->where('id_univ', $user->id_univ)
-                        ->withCount('absensi as kehadiran')
-                        ->with([
-                            'univ',
-                            'absensi' => function ($q) {
-                                return $q->where('is_confirmed', 1)->with('kegiatan');
-                            }
-                        ])->get();
+            $absensi = User::whereHas('roles', function ($q) {
+                $q->whereName('anggota')->orWhere('name', 'ketua')->orWhere('name', 'sekretaris');
+            })->where('id_univ', $user->id_univ)
+                ->withCount('absensi as kehadiran')
+                ->with([
+                    'univ',
+                    'absensi' => function ($q) {
+                        return $q->where('is_confirmed', 1)->with('kegiatan');
+                    }
+                ])->get();
         }
 
         // return view('absensi.export', compact('absensi'));
         // // dd($absensi);
         $pdf = PDF::loadView('absensi.export', compact('absensi'));
-    
+
         return $pdf->download('report-absensi.pdf');
     }
 }

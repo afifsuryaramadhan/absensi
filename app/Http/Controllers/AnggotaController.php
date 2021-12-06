@@ -8,25 +8,25 @@ use App\Models\Univ;
 use App\Models\Divisi;
 
 class AnggotaController extends Controller
-{    
+{
     public function index()
     {
         $currentUser = auth()->user();
         $role = $currentUser->getRoleNames()->first();
 
-        if ( strtolower($role) == 'ketua') {
-            $users = User::whereHas('roles', function($q) {
-                        $q->where('name', 'anggota');
-                    })->where('id_univ', $currentUser->id_univ)
-                    ->with('univ','divisi')
-                    ->orderBy('id', 'DESC')
-                    ->get();
+        if (strtolower($role) == 'ketua') {
+            $users = User::whereHas('roles', function ($q) {
+                $q->where('name', 'anggota')->orWhere('name', 'ketua');
+            })->where('id_univ', $currentUser->id_univ)
+                ->with('univ', 'divisi')
+                ->orderBy('id', 'DESC')
+                ->get();
         } else {
-            $users = User::whereHas('roles', function($q) {
-                        $q->where('name', 'anggota');
-                    })->with('univ','divisi')
-                    ->orderBy('id', 'DESC')
-                    ->get();
+            $users = User::whereHas('roles', function ($q) {
+                $q->where('name', 'anggota')->orWhere('name', 'ketua');
+            })->with('univ', 'divisi')
+                ->orderBy('id', 'DESC')
+                ->get();
         }
 
         return view('anggota.index', compact('users'));
@@ -36,7 +36,7 @@ class AnggotaController extends Controller
     {
         $univ = Univ::findOrFail(auth()->user()->id_univ);
         $divisi = Divisi::all();
-        return view('anggota.create', compact('univ','divisi'));
+        return view('anggota.create', compact('univ', 'divisi'));
     }
 
     public function store(Request $request)
@@ -63,7 +63,7 @@ class AnggotaController extends Controller
             $user->status = $request->status;
             $user->save();
 
-            $user->assignRole('anggota');   
+            $user->assignRole('anggota');
         } catch (Exception $e) {
             return redirect()->back()->with('message', '<div class="alert alert-danger my-3">Input gagal divalidasi.</div>');
         }
@@ -76,12 +76,12 @@ class AnggotaController extends Controller
         $univ = Univ::findOrFail(auth()->user()->id_univ);
         $divisi = Divisi::all();
         $user = User::findOrFail($id);
-        return view('anggota.edit', compact('univ','divisi', 'user'));
+        return view('anggota.edit', compact('univ', 'divisi', 'user'));
     }
 
     public function show($id)
     {
-        $user = User::with('univ','divisi')->findOrFail($id);
+        $user = User::with('univ', 'divisi')->findOrFail($id);
         $role = $user->getRoleNames()->first();
         return view('anggota.show', compact('user', 'role'));
     }
@@ -90,7 +90,7 @@ class AnggotaController extends Controller
     {
         $request->validate([
             'nama' => 'required',
-            'email' => 'required|email|unique:users,email,'.$id,
+            'email' => 'required|email|unique:users,email,' . $id,
             'tahun_ajar' => 'required',
             'id_divisi' => 'required',
             'status' => 'required',
@@ -107,13 +107,13 @@ class AnggotaController extends Controller
         $user = User::findOrFail($id);
         $user->update($data);
 
-        return redirect()->route('manajemen.anggota.index')->with('message', '<div class="alert alert-success my-3">Data '.$user->nama.' berhasil diubah.</div>');
+        return redirect()->route('manajemen.anggota.index')->with('message', '<div class="alert alert-success my-3">Data ' . $user->nama . ' berhasil diubah.</div>');
     }
 
     public function delete($id)
     {
         $user = User::where('id', $id)->first();
         $user->delete();
-        return redirect()->route('manajemen.anggota.index')->with('message', '<div class="alert alert-success my-3">'.$user->nama.' berhasil dihapus.</div>');
+        return redirect()->route('manajemen.anggota.index')->with('message', '<div class="alert alert-success my-3">' . $user->nama . ' berhasil dihapus.</div>');
     }
 }

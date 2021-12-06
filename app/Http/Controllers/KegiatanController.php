@@ -15,15 +15,15 @@ class KegiatanController extends Controller
         $role = auth()->user()->getRoleNames()->first();
         $user = auth()->user();
 
-        // Untuk anggota dan ketua
-        if (in_array(strtolower($role), ['anggota','ketua'] )) {
-            $kegiatan = Kegiatan::where('id_univ',$user->id_univ)->with([
-                            'univ',
-                            'absensi' => function($q) use ($user) {
-                                $q->where('id_user', $user->id);
-                            }
-                        ])->orderBy('id', 'DESC')
-                            ->get();
+        // Untuk anggota dan ketua dan sekretaris
+        if (in_array(strtolower($role), ['anggota', 'ketua', 'sekretaris'])) {
+            $kegiatan = Kegiatan::where('id_univ', $user->id_univ)->with([
+                'univ',
+                'absensi' => function ($q) use ($user) {
+                    $q->where('id_user', $user->id);
+                }
+            ])->orderBy('id', 'DESC')
+                ->get();
         } else {
             $kegiatan = Kegiatan::with('univ')->orderBy('id', 'DESC')->get();
         }
@@ -44,7 +44,7 @@ class KegiatanController extends Controller
             'tanggal' => 'required',
         ]);
 
-        if($request->has('id_univ')){
+        if ($request->has('id_univ')) {
             $id_univ = $request->id_univ;
         } else {
             $id_univ = auth()->user()->id_univ;
@@ -65,7 +65,7 @@ class KegiatanController extends Controller
     {
         $univ = Univ::all();
         $kegiatan = Kegiatan::where('id', $id)->first();
-        return view('kegiatan.edit', compact('kegiatan','univ'));
+        return view('kegiatan.edit', compact('kegiatan', 'univ'));
     }
 
     public function update(Request $request, $id)
@@ -81,7 +81,7 @@ class KegiatanController extends Controller
             'tanggal' => $request->tanggal,
             'id_univ' => $request->id_univ,
         ];
-        Kegiatan::where('id',$id)->update($data);
+        Kegiatan::where('id', $id)->update($data);
         return redirect()->route('manajemen.kegiatan.index')->with('message', '<div class="alert alert-success my-3">Detail kegiatan berhasil diubah.</div>');
     }
 
@@ -89,6 +89,6 @@ class KegiatanController extends Controller
     {
         $kegiatan = Kegiatan::where('id', $id)->first();
         $kegiatan->delete();
-        return redirect()->route('manajemen.kegiatan.index')->with('message', '<div class="alert alert-success my-3">Kegiatan '.$kegiatan->nama_kegiatan.' berhasil dihapus.</div>');
+        return redirect()->route('manajemen.kegiatan.index')->with('message', '<div class="alert alert-success my-3">Kegiatan ' . $kegiatan->nama_kegiatan . ' berhasil dihapus.</div>');
     }
 }
