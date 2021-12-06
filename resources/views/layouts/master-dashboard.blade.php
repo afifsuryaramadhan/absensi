@@ -34,7 +34,7 @@
 
   <!-- /.content-wrapper -->
   <footer class="main-footer">
-    <strong>Copyright &copy; 2021 Sistem Absensi Kegiatan</strong>
+    <strong>Copyright &copy; 2021 GenBI Cirebon</strong>
   </footer>
 
 </div>
