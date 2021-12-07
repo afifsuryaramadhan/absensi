@@ -98,7 +98,7 @@ use Carbon\Carbon;
                                 <div class="modal-body">
                                   <div class="form-group">
                                     <div>
-                                      <h6 class="font-weight-bold">Upload Foto Wajah</h4>
+                                      <h6 class="font-weight-bold">Upload Foto Kegiatan</h4>
                                     </div>
                                     <div>
                                       <input type="file" name="foto" required>
