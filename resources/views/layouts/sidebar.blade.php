@@ -79,6 +79,17 @@
           </li>
           @endcan
 
+          @can('keuangan')
+          <li>
+            <a href="{{ route('manajemen.keuangan.index') }}" class="nav-link {{ request()->segment(2) == 'keuangan' ? 'active' : null }}">
+              <i class="nav-icon fas fa-money-check-alt"></i>
+              <p>
+                Manajemen Keuangan
+              </p>
+            </a>
+          </li>
+          @endcan
+
           @can('manajemen-role')
           <li class="nav-item has-treeview {{ in_array(request()->segment(2), ['role','permission'] ) ? 'menu-open' : null }}">
             <a href="#" class="nav-link {{ in_array(request()->segment(2), ['role','permission'] ) ? 'active' : null }}">
@@ -102,17 +113,6 @@
                 </a>
               </li>
             </ul>
-          </li>
-          @endcan
-
-          @can('keuangan-show')
-          <li>
-            <a href="{{ route('keuangan.index') }}" class="nav-link {{ request()->segment(2) == 'user' ? 'active' : null }}">
-              <i class="nav-icon fas fa-user-cog"></i>
-              <p>
-                Keuangan
-              </p>
-            </a>
           </li>
           @endcan
           
