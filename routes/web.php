@@ -9,6 +9,7 @@ use App\Http\Controllers\KetuaController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\PermissionController;
+use App\Http\Controllers\KeuanganController;
 
 /*
 |--------------------------------------------------------------------------
@@ -123,6 +124,25 @@ Route::group(['as' => '', 'prefix' => '/'], function () {
             Route::middleware('permission:absensi-export')->get('eksport', [AbsensiController::class, 'eksport'])->name('eksport');
             Route::middleware('permission:absensi-approve')->patch('approve/{id}', [AbsensiController::class, 'approve'])->name('approve');
         });
+
+        //Keuangan
+        Route::group(['as' => 'keuangan.', 'prefix' => 'keuangan/', 'middleware' => 'permission:keuangan'], function () {
+            Route::get('', [KeuanganController::class, 'index'])->name('index');
+            Route::get('show/{id}', [KeuanganController::class, 'show'])->name('show');
+
+            Route::group(['middleware' => 'permission:keuangan-create'], function () {
+                Route::get('create', [KeuanganController::class, 'create'])->name('create');
+                Route::post('store', [KeuanganController::class, 'store'])->name('store');
+            });
+
+
+            Route::group(['middleware' => 'permission:keuangan-edit'], function () {
+                Route::get('edit/{id}', [KeuanganController::class, 'edit'])->name('edit');
+                Route::post('update/{id}', [KeuanganController::class, 'update'])->name('update');
+            });
+
+            Route::middleware('permission:keuangan-delete')->delete('delete/{id}', [KeuanganController::class, 'delete'])->name('delete');
+        });
     });
 
     // Absensi
@@ -133,15 +153,5 @@ Route::group(['as' => '', 'prefix' => '/'], function () {
             Route::get('create', [AbsensiController::class, 'create'])->name('create');
             Route::post('submit', [AbsensiController::class, 'submit'])->name('submit');
         });
-    });
-
-    //Keuangan
-    Route::group(['as' => 'keuangan.', 'prefix' => 'keuangan/', 'middleware' => 'permission:keuangan'], function () {
-        Route::get('create', [KeuanganController::class, 'create'])->name('create');
-        Route::post('store', [KeuanganController::class, 'store'])->name('store');
-        Route::get('edit/{id}', [KeuanganController::class, 'edit'])->name('edit');
-        Route::get('show/{id}', [KeuanganController::class, 'show'])->name('show');
-        Route::post('update/{id}', [KeuanganController::class, 'update'])->name('update');
-        Route::delete('delete/{id}', [KeuanganController::class, 'delete'])->name('delete');
     });
 });
