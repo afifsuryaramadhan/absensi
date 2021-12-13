@@ -19,6 +19,7 @@ class DivisiSeeder extends Seeder
             ['nama_divisi' => 'Pendidikan'],
             ['nama_divisi' => 'Kesehatan'],
             ['nama_divisi' => 'Lingkungan Hidup'],
+            ['nama_divisi' => 'BPH']
         ]);
     }
 }

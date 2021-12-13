@@ -2,7 +2,7 @@
   <!-- Main Sidebar Container -->
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-    <a href="index3.html" class="brand-link">
+    <a href="#" class="brand-link">
       <img src="{{ asset('admin-lte/dist/img/AdminLTELogo.png') }}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
            style="opacity: .8">
       <span class="brand-text font-weight-light">{{ ucwords(auth()->user()->nama) }}</span>
@@ -85,6 +85,17 @@
               <i class="nav-icon fas fa-money-check-alt"></i>
               <p>
                 Manajemen Keuangan
+              </p>
+            </a>
+          </li>
+          @endcan
+
+          @can('manajemen-periode')
+          <li>
+            <a href="{{ route('manajemen.periode.index') }}" class="nav-link {{ request()->segment(2) == 'periode' ? 'active' : null }}">
+              <i class="nav-icon fas  fa-calendar"></i>
+              <p>
+                Manajemen Periode
               </p>
             </a>
           </li>

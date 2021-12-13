@@ -143,6 +143,25 @@ Route::group(['as' => '', 'prefix' => '/'], function () {
 
             Route::middleware('permission:keuangan-delete')->delete('delete/{id}', [KeuanganController::class, 'delete'])->name('delete');
         });
+
+        //periode
+        Route::group(['as' => 'periode.', 'prefix' => 'periode/', 'middleware' => 'permission:manajemen-periode'], function () {
+            Route::get('', [KeuanganController::class, 'index'])->name('index');
+            Route::get('show/{id}', [KeuanganController::class, 'show'])->name('show');
+
+            Route::group(['middleware' => 'permission:periode-create'], function () {
+                Route::get('create', [KeuanganController::class, 'create'])->name('create');
+                Route::post('store', [KeuanganController::class, 'store'])->name('store');
+            });
+
+
+            Route::group(['middleware' => 'permission:periode-edit'], function () {
+                Route::get('edit/{id}', [KeuanganController::class, 'edit'])->name('edit');
+                Route::post('update/{id}', [KeuanganController::class, 'update'])->name('update');
+            });
+
+            Route::middleware('permission:periode-delete')->delete('delete/{id}', [KeuanganController::class, 'delete'])->name('delete');
+        });
     });
 
     // Absensi
