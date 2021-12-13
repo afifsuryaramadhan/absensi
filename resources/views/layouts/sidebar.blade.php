@@ -79,28 +79,6 @@
           </li>
           @endcan
 
-          @can('keuangan')
-          <li>
-            <a href="{{ route('manajemen.keuangan.index') }}" class="nav-link {{ request()->segment(2) == 'keuangan' ? 'active' : null }}">
-              <i class="nav-icon fas fa-money-check-alt"></i>
-              <p>
-                Manajemen Keuangan
-              </p>
-            </a>
-          </li>
-          @endcan
-
-          @can('manajemen-periode')
-          <li>
-            <a href="{{ route('manajemen.periode.index') }}" class="nav-link {{ request()->segment(2) == 'periode' ? 'active' : null }}">
-              <i class="nav-icon fas  fa-calendar"></i>
-              <p>
-                Manajemen Periode
-              </p>
-            </a>
-          </li>
-          @endcan
-
           @can('manajemen-role')
           <li class="nav-item has-treeview {{ in_array(request()->segment(2), ['role','permission'] ) ? 'menu-open' : null }}">
             <a href="#" class="nav-link {{ in_array(request()->segment(2), ['role','permission'] ) ? 'active' : null }}">
