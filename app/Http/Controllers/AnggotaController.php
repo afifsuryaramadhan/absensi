@@ -16,14 +16,14 @@ class AnggotaController extends Controller
 
         if (strtolower($role) == 'ketua') {
             $users = User::whereHas('roles', function ($q) {
-                $q->where('name', 'anggota')->orWhere('name', 'ketua');
+                $q->where('name', 'anggota')->orWhere('name', 'ketua')->orWhere('name', 'sekretaris');
             })->where('id_univ', $currentUser->id_univ)
                 ->with('univ', 'divisi')
                 ->orderBy('id', 'DESC')
                 ->get();
         } else {
             $users = User::whereHas('roles', function ($q) {
-                $q->where('name', 'anggota')->orWhere('name', 'ketua');
+                $q->where('name', 'anggota')->orWhere('name', 'ketua')->orWhere('name', 'sekretaris');
             })->with('univ', 'divisi')
                 ->orderBy('id', 'DESC')
                 ->get();
