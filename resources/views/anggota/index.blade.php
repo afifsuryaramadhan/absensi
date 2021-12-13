@@ -30,6 +30,7 @@
               <h5 class="card-title">Data Anggota Komunitas</h5>
             </div>
             <div class="card-body">
+
               @can('anggota-create')
               <div class="row my-3">
                 <div class="col-md-12">
@@ -37,6 +38,7 @@
                 </div>
               </div>
               @endcan
+              
               <div class="row">
                 <div class="col-lg col-md-12">
                   <table id="example1" class="table table-bordered table-hover datatables-responsive">
