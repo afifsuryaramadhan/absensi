@@ -21,10 +21,9 @@ class User extends Authenticatable
         'nama',
         'email',
         'password',
-        'tahun_ajar',
-        'status',
         'id_univ',
-        'id_divisi'
+        'id_divisi',
+        'id_periode',
     ];
 
     public function univ()

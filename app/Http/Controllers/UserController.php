@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Divisi;
 use App\Models\Univ;
-use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\Divisi;
+use App\Models\Periode;
+use Illuminate\Http\Request;
 use Spatie\Permission\Models\Role;
 
 class UserController extends Controller
@@ -23,7 +24,8 @@ class UserController extends Controller
         $roles = Role::all();
         $univ = Univ::all();
         $divisi = Divisi::all();
-        return view('manajemen-user.create', compact('univ', 'divisi', 'roles'));
+        $periode = Periode::all();
+        return view('manajemen-user.create', compact('univ', 'divisi', 'roles', 'periode'));
     }
 
     public function store(Request $request)
@@ -40,8 +42,8 @@ class UserController extends Controller
             'password' => bcrypt($request->password),
             'id_univ' => $request->id_univ,
             'id_divisi' => $request->id_divisi,
-            'tahun_ajar' => $request->tahun_ajar,
-            'status' => $request->status,
+            'id_periode' => $request->id_periode,
+
         ];
 
         $user = User::create($data);

@@ -76,19 +76,13 @@
                         </select>
                     </div>
                     <div class="form-group">
-                      <label for="">Status</label>
-                      <div class="form-check">
-                        <div class="row">
-                          <div class="col-sm-1">
-                            <input class="form-check-input" type="radio" name="status" id="aktif" value="Aktif" {{ old('status')=='Aktif' ? 'checked' : '' }}>
-                            <label class="form-check-label" for="aktif">Aktif</label>
-                          </div>
-                          <div class="col-sm-1">
-                            <input class="form-check-input" type="radio" name="status" id="non-aktif" value="Tidak aktif" {{ old('status')=='Tidak aktif' ? 'checked' : '' }}>
-                            <label class="form-check-label" for="non-aktif">Tidak Aktif</label>
-                          </div>
-                        </div>
-                      </div>
+                        <label for="">Periode</label>
+                        <select name="id_periode" id="" class="form-control">
+                            <option value="">-- Pilih Periode --</option>
+                            @foreach ($periode as $val)
+                              <option value="{{$val->id}}" {{ old('id_periode') == $val->id ? 'selected':null}} >{{ $val->periode }}</option>
+                            @endforeach
+                        </select>
                     </div>
                     <div class="form-group">
                         <button class="btn btn-block btn-primary">Simpan</button>
