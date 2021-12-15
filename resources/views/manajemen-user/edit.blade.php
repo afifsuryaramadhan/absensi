@@ -68,10 +68,6 @@
                         </select>
                     </div>
                     <div class="form-group">
-                        <label for="">Tahun Ajar</label>
-                        <input type="number" name="tahun_ajar" id="" class="form-control" placeholder="Tahun ajar" value="{{ !empty(old('tahun_ajar')) ? old('tahun_ajar') : $user->tahun_ajar }}">
-                    </div>
-                    <div class="form-group">
                       <label for="">Status</label>
                       <div class="form-check">
                         <div class="row">

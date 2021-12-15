@@ -46,9 +46,9 @@
                 		<td>{{ $user->divisi->nama_divisi ?? ''}}</td>
                 	</tr>
                 	<tr>
-                		<td class="font-weight-bold">Tahun Ajar</td>
+                		<td class="font-weight-bold">Periode</td>
                 		<td>:</td>
-                		<td>{{ $user->tahun_ajar ?? ''}}</td>
+                		<td>{{ $user->periode->periode ?? ''}}</td>
                 	</tr>
                 </table>
                 <a href="{{ route('manajemen.user.index') }}" class="btn btn-primary float-right"><i class="fas fa-arrow-circle-left"></i> Kembali</a>

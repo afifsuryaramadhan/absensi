@@ -12,9 +12,9 @@ class UserController extends Controller
 {
     public function index()
     {
-        $users = User::with('univ','divisi')
-                ->orderBy('id', 'DESC')
-                ->get();
+        $users = User::with('univ', 'divisi')
+            ->orderBy('id', 'DESC')
+            ->get();
         return view('manajemen-user.index', compact('users'));
     }
 
@@ -23,7 +23,7 @@ class UserController extends Controller
         $roles = Role::all();
         $univ = Univ::all();
         $divisi = Divisi::all();
-        return view('manajemen-user.create', compact('univ','divisi', 'roles'));
+        return view('manajemen-user.create', compact('univ', 'divisi', 'roles'));
     }
 
     public function store(Request $request)
@@ -56,12 +56,12 @@ class UserController extends Controller
         $univ = Univ::all();
         $divisi = Divisi::all();
         $user = User::findOrFail($id);
-        return view('manajemen-user.edit', compact('univ','divisi', 'user', 'roles'));
+        return view('manajemen-user.edit', compact('univ', 'divisi', 'user', 'roles'));
     }
 
     public function show($id)
     {
-        $user = User::with('univ','divisi')->findOrFail($id);
+        $user = User::with('univ', 'divisi')->findOrFail($id);
         $role = $user->getRoleNames()->first();
         return view('manajemen-user.show', compact('user', 'role'));
     }
@@ -70,7 +70,7 @@ class UserController extends Controller
     {
         $request->validate([
             'nama' => 'required',
-            'email' => 'required|email|unique:users,email,'.$id,
+            'email' => 'required|email|unique:users,email,' . $id,
         ]);
 
         $data = [
@@ -85,13 +85,13 @@ class UserController extends Controller
         $user = User::findOrFail($id);
         $user->update($data);
 
-        return redirect()->route('manajemen.user.index')->with('message', '<div class="alert alert-success my-3">Data '.$user->nama.' berhasil diubah.</div>');
+        return redirect()->route('manajemen.user.index')->with('message', '<div class="alert alert-success my-3">Data ' . $user->nama . ' berhasil diubah.</div>');
     }
 
     public function delete($id)
     {
         $user = User::where('id', $id)->first();
         $user->delete();
-        return redirect()->route('manajemen.user.index')->with('message', '<div class="alert alert-success my-3">'.$user->nama.' berhasil dihapus.</div>');
+        return redirect()->route('manajemen.user.index')->with('message', '<div class="alert alert-success my-3">' . $user->nama . ' berhasil dihapus.</div>');
     }
 }

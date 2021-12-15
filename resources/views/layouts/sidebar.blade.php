@@ -79,6 +79,17 @@
           </li>
           @endcan
 
+          @can('periode')
+          <li class="nav-item">
+            <a href="{{ route('manajemen.periode.index') }}" class="nav-link {{ request()->segment(2) == 'periode' ? 'active' : null }}">
+              <i class="nav-icon fas fa-user-cog"></i>
+              <p>
+                Manajemen Periode
+              </p>
+            </a>
+          </li>
+          @endcan
+
           @can('manajemen-role')
           <li class="nav-item has-treeview {{ in_array(request()->segment(2), ['role','permission'] ) ? 'menu-open' : null }}">
             <a href="#" class="nav-link {{ in_array(request()->segment(2), ['role','permission'] ) ? 'active' : null }}">

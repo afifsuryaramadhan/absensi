@@ -67,8 +67,8 @@
                         </select>
                     </div>
                     <div class="form-group">
-                        <label for="">Tahun Ajar</label>
-                        <input type="number" name="tahun_ajar" id="" class="form-control" placeholder="Tahun ajar" value="{{ old('tahun_ajar') }}">
+                        <label for="">Periode</label>
+                        <input type="number" name="periode" id="" class="form-control" placeholder="Periode" value="{{ old('periode') }}">
                     </div>
                     <div class="form-group">
                       <label for="">Status</label>

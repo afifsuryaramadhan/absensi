@@ -2,14 +2,14 @@
 
 use Illuminate\Support\Facades\Route;
 
-use App\Http\Controllers\AbsensiController;
-use App\Http\Controllers\KegiatanController;
-use App\Http\Controllers\AnggotaController;
-use App\Http\Controllers\KetuaController;
-use App\Http\Controllers\UserController;
 use App\Http\Controllers\RoleController;
-use App\Http\Controllers\PermissionController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\KetuaController;
+use App\Http\Controllers\AbsensiController;
+use App\Http\Controllers\AnggotaController;
 use App\Http\Controllers\PeriodeController;
+use App\Http\Controllers\KegiatanController;
+use App\Http\Controllers\PermissionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -123,6 +123,17 @@ Route::group(['as' => '', 'prefix' => '/'], function () {
             Route::get('', [AbsensiController::class, 'list'])->name('index');
             Route::middleware('permission:absensi-export')->get('eksport', [AbsensiController::class, 'eksport'])->name('eksport');
             Route::middleware('permission:absensi-approve')->patch('approve/{id}', [AbsensiController::class, 'approve'])->name('approve');
+        });
+
+        //Manajemen Periode
+        //coba status aktif/tidak aktif
+        Route::group(['as' => 'periode.', 'prefix' => 'periode/', 'middleware' => 'permission:periode'], function () {
+            Route::get('', [PeriodeController::class, 'index'])->name('index');
+            Route::get('create', [PeriodeController::class, 'create'])->name('create');
+            Route::post('store', [PeriodeController::class, 'store'])->name('store');
+            Route::get('edit/{id}', [PeriodeController::class, 'edit'])->name('edit');
+            Route::delete('delete/{id}', [PeriodeController::class, 'delete'])->name('delete');
+            Route::get('changestatus', [PeriodeController::class, 'changeStatus'])->name('changeStatus');
         });
     });
 

@@ -43,7 +43,6 @@
                         <th></th>
                         <th>Nama</th>
                         <th>Universitas</th>
-                        <th>Tahun Ajar</th>
                         <th>Status</th>
                       </tr>
                     </thead>
@@ -55,7 +54,6 @@
                                 </td>
                                 <td class="align-middle">{{ $user->nama }}</td>
                                 <td class="align-middle">{{ isset($user->univ) ? $user->univ->nama_univ : '-' }}</td>
-                                <td class="align-middle">{{ $user->tahun_ajar}}</td>
                                 <td class="align-middle "><span class="badge badge-{{ $user->status == 'Aktif' ? 'success' : 'dark' }} text-white px-3 py-1">{{ $user->status }}</span></td>
                             </tr>
                         @endforeach
