@@ -13,4 +13,9 @@ class Periode extends Model
         'periode',
         'status'
     ];
+
+    public function user()
+    {
+        return $this->hasMany(User::class, 'id_periode', 'id');
+    }
 }
