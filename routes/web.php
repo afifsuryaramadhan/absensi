@@ -129,11 +129,19 @@ Route::group(['as' => '', 'prefix' => '/'], function () {
         //coba status aktif/tidak aktif
         Route::group(['as' => 'periode.', 'prefix' => 'periode/', 'middleware' => 'permission:periode'], function () {
             Route::get('', [PeriodeController::class, 'index'])->name('index');
-            Route::get('create', [PeriodeController::class, 'create'])->name('create');
-            Route::post('store', [PeriodeController::class, 'store'])->name('store');
-            Route::get('edit/{id}', [PeriodeController::class, 'edit'])->name('edit');
-            Route::delete('delete/{id}', [PeriodeController::class, 'delete'])->name('delete');
             Route::get('changestatus', [PeriodeController::class, 'changeStatus'])->name('changeStatus');
+
+            Route::group(['middleware' => 'permission:periode-create'], function () {
+                Route::get('create', [PeriodeController::class, 'create'])->name('create');
+                Route::post('store', [PeriodeController::class, 'store'])->name('store');
+            });
+
+            Route::group(['middleware' => 'permission:periode-edit'], function () {
+                Route::get('edit/{id}', [PeriodeController::class, 'edit'])->name('edit');
+                Route::post('update/{id}', [PeriodeController::class, 'update'])->name('update');
+            });
+
+            Route::middleware('permission:periode-delete')->delete('delete/{id}', [PeriodeController::class, 'delete'])->name('delete');
         });
     });
 

@@ -57,9 +57,8 @@
                             <tbody>
                               @foreach($periode as $periodes)
                                 <tr class="align-middle">
-
-                                @can('periode-delete')
                                 <td class="text-center col-2">
+                                  @can('periode-delete')
                                   <a href="{{ route('manajemen.periode.delete', $periodes->id) }}" data-method='delete' data-confirm='Apakah anda yakin ingin menghapus periode {{$periodes->nama_periode }}?' class="btn btn-sm btn-danger"><i class="fas fa-trash"></i></a>
                                   @endcan
                                   

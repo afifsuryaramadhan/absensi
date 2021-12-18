@@ -61,7 +61,7 @@ class PeriodeController extends Controller
 
         Periode::create($data);
 
-        return redirect()->route('manajemen.periode.index');
+        return redirect()->route('manajemen.periode.index')->with('success', 'Periode berhasil ditambahkan');
     }
 
     /**
@@ -83,7 +83,8 @@ class PeriodeController extends Controller
      */
     public function edit($id)
     {
-        //
+        $periode = Periode::findOrFail($id);
+        return view('periode.edit', compact('periode'));
     }
 
     /**
@@ -95,7 +96,14 @@ class PeriodeController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'periode' => 'required',
+            'status' => 'required'
+        ]);
+
+        Periode::findOrFail($id)->update($request->all());
+
+        return redirect()->route('manajemen.periode.index')->with('success', 'Periode berhasil diubah');
     }
 
     /**

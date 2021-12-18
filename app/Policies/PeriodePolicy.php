@@ -2,7 +2,6 @@
 
 namespace App\Policies;
 
-use App\Models\Periode;
 use App\Models\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
@@ -11,84 +10,16 @@ class PeriodePolicy
     use HandlesAuthorization;
 
     /**
-     * Determine whether the user can view any models.
+     * Create a new policy instance.
      *
-     * @param  \App\Models\User  $user
-     * @return \Illuminate\Auth\Access\Response|bool
+     * @return void
      */
-    public function viewAny(User $user)
+    public function __construct()
     {
         //
     }
-
-    /**
-     * Determine whether the user can view the model.
-     *
-     * @param  \App\Models\User  $user
-     * @param  \App\Models\Periode  $periode
-     * @return \Illuminate\Auth\Access\Response|bool
-     */
-    public function view(User $user, Periode $periode)
+    public function akses_periode(User $user)
     {
-        //
-    }
-
-    /**
-     * Determine whether the user can create models.
-     *
-     * @param  \App\Models\User  $user
-     * @return \Illuminate\Auth\Access\Response|bool
-     */
-    public function create(User $user)
-    {
-        //
-    }
-
-    /**
-     * Determine whether the user can update the model.
-     *
-     * @param  \App\Models\User  $user
-     * @param  \App\Models\Periode  $periode
-     * @return \Illuminate\Auth\Access\Response|bool
-     */
-    public function update(User $user, Periode $periode)
-    {
-        //
-    }
-
-    /**
-     * Determine whether the user can delete the model.
-     *
-     * @param  \App\Models\User  $user
-     * @param  \App\Models\Periode  $periode
-     * @return \Illuminate\Auth\Access\Response|bool
-     */
-    public function delete(User $user, Periode $periode)
-    {
-        //
-    }
-
-    /**
-     * Determine whether the user can restore the model.
-     *
-     * @param  \App\Models\User  $user
-     * @param  \App\Models\Periode  $periode
-     * @return \Illuminate\Auth\Access\Response|bool
-     */
-    public function restore(User $user, Periode $periode)
-    {
-        //
-    }
-
-    /**
-     * Determine whether the user can permanently delete the model.
-     *
-     * @param  \App\Models\User  $user
-     * @param  \App\Models\Periode  $periode
-     * @return \Illuminate\Auth\Access\Response|bool
-     */
-    public function forceDelete(User $user, Periode $periode)
-    {
-        //
+        return $user->periode == '1';
     }
 }

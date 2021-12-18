@@ -1,6 +1,6 @@
 @extends('layouts.master-dashboard')
 
-@section('title', 'Sistem Absensi Kegiatan')
+@section('title', 'Sistem GenBI Cirebon')
 
 
 @section('content')
@@ -8,33 +8,33 @@
     <div class="container-fluid">
       <div class="row mb-2">
         <div class="col-sm-6">
-          <h1 class="m-0 text-dark">Tambah Anggota</h1>
+          <h1 class="m-0 text-dark">Edit Periode</h1>
         </div><!-- /.col -->
         <div class="col-sm-6 small-9">
           <ol class="breadcrumb float-sm-right">
-            <li class="breadcrumb-item"><a href="#">Manajemen Anggota</a></li>
-            <li class="breadcrumb-item active">Tambah Anggota</li>
+            <li class="breadcrumb-item"><a href="#">Manajemen Periode</a></li>
+            <li class="breadcrumb-item active">Edit Periode</li>
           </ol>
         </div><!-- /.col -->
       </div><!-- /.row -->
-
+      
       {{-- Alert --}}
       @if (\Session::has('message'))
           {!! \Session::get('message') !!}
       @endif
-      
+
       <div class="row my-3">
         <div class="col-lg col-md-12">
           <div class="card card-primary small-9">
             <div class="card-header">
-              <h5 class="card-title">Form Tambah Anggota</h5>
+              <h5 class="card-title">Form Edit Periode</h5>
             </div>
             <div class="card-body">
-                <form action="{{ route('manajemen.periode.store') }}" method="POST">
+                <form action="{{ route('manajemen.periode.update', $periode->id) }}" method="POST">
                     @csrf
                     <div class="form-group">
                         <label for="">Periode</label>
-                        <input type="text" name="periode" id="" class="form-control" placeholder="Tahun Periode" value="{{ old('periode') }}">
+                        <input type="text" name="periode" id="" class="form-control" placeholder="Tahun Periode" {{ !empty(old('periode')) ? old('periode') : $periode->periode }}">
                         @error('periode')
                             <div class="text-danger">{{ $message }}</div>
                         @enderror
