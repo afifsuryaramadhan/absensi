@@ -45,8 +45,7 @@ class UserSeeder extends Seeder
             'email' => 'jenisulastri@gmail.com',
             'id_univ' => 1,
             'id_divisi' => 1,
-            'tahun_ajar' => '2021',
-            'status' => 'Aktif',
+            'id_periode' => 1,
             'password' => bcrypt('jenisulastri123'),
         ]);
         $ketua->assignRole('ketua');
@@ -56,8 +55,7 @@ class UserSeeder extends Seeder
             'email' => 'afifsuryaramadhan@gmail.com',
             'id_univ' => 1,
             'id_divisi' => 2,
-            'tahun_ajar' => '2021',
-            'status' => 'Aktif',
+            'id_periode' => 1,
             'password' => bcrypt('afifsuryaramadhan123'),
         ]);
         $anggota->assignRole('anggota');

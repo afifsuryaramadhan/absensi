@@ -18,8 +18,7 @@ class CreateUsersTable extends Migration
             $table->string('email')->unique();
             $table->string('password');
             $table->string('nama')->nullable();
-            $table->year('tahun_ajar')->nullable();
-            $table->string('status')->nullable();
+            $table->year('id_periode')->nullable();
             $table->bigInteger('id_univ')->nullable();
             $table->bigInteger('id_divisi')->nullable();
             $table->timestamps();

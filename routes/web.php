@@ -10,6 +10,7 @@ use App\Http\Controllers\AnggotaController;
 use App\Http\Controllers\PeriodeController;
 use App\Http\Controllers\KegiatanController;
 use App\Http\Controllers\PermissionController;
+use Illuminate\Routing\RouteGroup;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,7 +28,8 @@ Auth::routes();
 
 Route::group(['as' => '', 'prefix' => '/'], function () {
     Route::get('', function () {
-        return redirect()->route('login');
+        // return redirect()->route('login');
+        return 'Hello World !';
     });
 
     Route::get('back', function () {
@@ -50,12 +52,14 @@ Route::group(['as' => '', 'prefix' => '/'], function () {
 
         // manajemen-permission
         Route::group(['as' => 'permission.', 'prefix' => 'permission/', 'middleware' => 'permission:manajemen-permission'], function () {
-            Route::get('', [PermissionController::class, 'index'])->name('index');
-            Route::get('create', [PermissionController::class, 'create'])->name('create');
-            Route::post('store', [PermissionController::class, 'store'])->name('store');
-            Route::get('edit/{id}', [PermissionController::class, 'edit'])->name('edit');
-            Route::post('update/{id}', [PermissionController::class, 'update'])->name('update');
-            Route::delete('delete/{id}', [PermissionController::class, 'delete'])->name('delete');
+            Route::group(['middleware' => ['can:periode']], function () { //Auth Periode
+                Route::get('', [PermissionController::class, 'index'])->name('index');
+                Route::get('create', [PermissionController::class, 'create'])->name('create');
+                Route::post('store', [PermissionController::class, 'store'])->name('store');
+                Route::get('edit/{id}', [PermissionController::class, 'edit'])->name('edit');
+                Route::post('update/{id}', [PermissionController::class, 'update'])->name('update');
+                Route::delete('delete/{id}', [PermissionController::class, 'delete'])->name('delete');
+            });
         });
 
         // Manajemen user
@@ -145,13 +149,15 @@ Route::group(['as' => '', 'prefix' => '/'], function () {
         });
     });
 
-    // Absensi
-    Route::group(['as' => 'absensi.', 'prefix' => 'absensi/', 'middleware' => 'permission:absensi'], function () {
-        Route::get('', [AbsensiController::class, 'index'])->name('index');
+    Route::group(['middleware' => 'can:akses_periode'], function () {
+        // Absensi
+        Route::group(['as' => 'absensi.', 'prefix' => 'absensi/', 'middleware' => 'permission:absensi'], function () {
+            Route::get('', [AbsensiController::class, 'index'])->name('index');
 
-        Route::group(['middleware' => 'permission:absensi-submit'], function () {
-            Route::get('create', [AbsensiController::class, 'create'])->name('create');
-            Route::post('submit', [AbsensiController::class, 'submit'])->name('submit');
+            Route::group(['middleware' => 'permission:absensi-submit'], function () {
+                Route::get('create', [AbsensiController::class, 'create'])->name('create');
+                Route::post('submit', [AbsensiController::class, 'submit'])->name('submit');
+            });
         });
     });
 });

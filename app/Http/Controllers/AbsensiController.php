@@ -15,6 +15,7 @@ class AbsensiController extends Controller
     //
     public function index()
     {
+        // $this->authorize('periode', User::class); //batasi perilaku periode
         $user = auth()->user();
         $absensi = Absensi::where('id_user', $user->id)
             ->where('is_confirmed', 1)
@@ -84,7 +85,7 @@ class AbsensiController extends Controller
         $user = auth()->user();
         if ($user->hasRole('admin')) {
             $absensi = User::whereHas('roles', function ($q) {
-                $q->whereName('anggota')->orWhere('name', 'ketua')->orWhere('name', 'sekretaris');
+                $q->whereName('anggota')->orWhere('name', 'ketua')->orWhere('name', 'sekretaris')->orWhere('name', 'bendahara');
             })->withCount('absensi as kehadiran')
                 ->with([
                     'univ',
@@ -94,7 +95,7 @@ class AbsensiController extends Controller
                 ])->get();
         } else {
             $absensi = User::whereHas('roles', function ($q) {
-                $q->whereName('anggota')->orWhere('name', 'ketua')->orWhere('name', 'sekretaris');
+                $q->whereName('anggota')->orWhere('name', 'ketua')->orWhere('name', 'sekretaris')->orWhere('name', 'bendahara');
             })->where('id_univ', $user->id_univ)
                 ->withCount('absensi as kehadiran')
                 ->with([

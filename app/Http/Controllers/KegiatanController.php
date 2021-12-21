@@ -15,8 +15,6 @@ class KegiatanController extends Controller
 
         $role = auth()->user()->getRoleNames()->first();
         $user = auth()->user();
-        // $this->authorize('akses_periode', User::class); //kondisi jika periode habis
-
         // Untuk anggota dan ketua dan sekretaris
         if (in_array(strtolower($role), ['anggota', 'ketua', 'sekretaris'])) {
             $kegiatan = Kegiatan::where('id_univ', $user->id_univ)->with([

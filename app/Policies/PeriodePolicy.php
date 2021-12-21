@@ -18,8 +18,9 @@ class PeriodePolicy
     {
         //
     }
-    public function akses_periode(User $user)
-    {
-        return $user->periode == '1';
-    }
+    // public function periode(User $user)
+    // {
+    //     User::all();
+    //     return $user->periode->status == 1;
+    // }
 }
