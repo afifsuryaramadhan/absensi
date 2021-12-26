@@ -15,7 +15,7 @@ class CreatePeriodesTable extends Migration
     {
         Schema::create('periode', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('nama_periode')->nullable();
+            $table->string('periode')->nullable();
             $table->enum('status', [0, 1])->default(0);
             $table->timestamps();
         });
