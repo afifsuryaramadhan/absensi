@@ -18,7 +18,7 @@ class UserSeeder extends Seeder
             'nama' => 'Admin',
             'email' => 'admin@gmail.com',
             'password' => bcrypt('admin123'),
-            'status' => 'Aktif',
+            'id_periode' => 1,
         ]);
         $admin->assignRole('admin');
 
@@ -28,13 +28,13 @@ class UserSeeder extends Seeder
                 'nama' => 'Rizka Sudarno',
                 'email' => 'rizkasudarno@gmail.com',
                 'password' => bcrypt('rizkasudarno123'),
-                'status' => 'Aktif',
+                'id_periode' => 1,
             ],
             [
                 'nama' => 'Fathia Hapsari',
                 'email' => 'fathiahapsari@gmail.com',
                 'password' => bcrypt('fathiahapsari123'),
-                'status' => 'Aktif',
+                'id_periode' => 1,
             ]
 
         );
@@ -45,7 +45,7 @@ class UserSeeder extends Seeder
             'email' => 'jenisulastri@gmail.com',
             'id_univ' => 1,
             'id_divisi' => 1,
-            'id_periode' => 1,
+            'id_periode' => 2,
             'password' => bcrypt('jenisulastri123'),
         ]);
         $ketua->assignRole('ketua');
@@ -55,7 +55,7 @@ class UserSeeder extends Seeder
             'email' => 'afifsuryaramadhan@gmail.com',
             'id_univ' => 1,
             'id_divisi' => 2,
-            'id_periode' => 1,
+            'id_periode' => 2,
             'password' => bcrypt('afifsuryaramadhan123'),
         ]);
         $anggota->assignRole('anggota');
