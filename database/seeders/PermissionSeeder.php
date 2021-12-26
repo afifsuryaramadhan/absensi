@@ -56,6 +56,6 @@ class PermissionSeeder extends Seeder
         Permission::firstOrCreate(['name' => 'absensi'])->assignRole('anggota'); // riwayat absensi masing2
         Permission::firstOrCreate(['name' => 'absensi-submit'])->assignRole('anggota');
 
-        Permission::firstOrCreate(['name' => 'akses_periode'])->assignRole('admin');
+        Permission::firstOrCreate(['name' => 'periode'])->assignRole('admin');
     }
 }
