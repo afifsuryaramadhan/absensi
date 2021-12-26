@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Periode;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -18,5 +19,6 @@ class DatabaseSeeder extends Seeder
         $this->call(UnivSeeder::class);
         $this->call(DivisiSeeder::class);
         $this->call(UserSeeder::class);
+        $this->call(PeriodeSeeder::class);
     }
 }
