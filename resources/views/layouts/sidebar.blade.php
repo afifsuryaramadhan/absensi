@@ -13,11 +13,17 @@
       <!-- Sidebar Menu -->
       <nav class="mt-2">
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+            <li class="nav-item">
+                <a href="{{ route('dashboard') }}" class="nav-link {{ request()->segment(1) == 'dashboard' ? 'active' : null }}">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Dashboard</p>
+                </a>
+            </li>
           <li class="nav-item has-treeview {{ in_array(request()->segment(2), ['absensi','kegiatan','anggota','ketua'] ) || request()->segment(1)=='absensi' ? 'menu-open' : null }}">
             <a href="#" class="nav-link {{ in_array(request()->segment(2), ['absensi','kegiatan','anggota','ketua'] ) || request()->segment(1)=='absensi' ? 'active' : null }}">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
-                Dashboard
+                Kegiatan | Absensi
                 <i class="right fas fa-angle-left"></i>
               </p>
             </a>
@@ -79,10 +85,22 @@
           </li>
           @endcan
 
+          {{-- @can('keuangan')
+          <li class="nav-item">
+            <a href="{{ route('manajemen.user.index') }}" class="nav-link {{ request()->segment(2) == 'keuangan' ? 'active' : null }}">
+              <i class="fas fa-comment-dollar"></i>
+              <p>
+                Manajemen Keuangan
+              </p>
+            </a>
+          </li>
+          @endcan --}}
+
+
           @can('periode')
           <li class="nav-item">
             <a href="{{ route('manajemen.periode.index') }}" class="nav-link {{ request()->segment(2) == 'periode' ? 'active' : null }}">
-              <i class="nav-icon fas fa-user-cog"></i>
+              <i class="nav-icon far fa-calendar-alt"></i>
               <p>
                 Manajemen Periode
               </p>
@@ -93,7 +111,7 @@
           @can('manajemen-role')
           <li class="nav-item has-treeview {{ in_array(request()->segment(2), ['role','permission'] ) ? 'menu-open' : null }}">
             <a href="#" class="nav-link {{ in_array(request()->segment(2), ['role','permission'] ) ? 'active' : null }}">
-              <i class="nav-icon fas fa-cog"></i>
+              <i class="nav-icon fas fa-dice-d6"></i>
               <p>
                 Role & Permission
                 <i class="right fas fa-angle-left"></i>

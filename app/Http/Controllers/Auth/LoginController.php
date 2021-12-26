@@ -42,7 +42,6 @@ class LoginController extends Controller
 
     public function authenticated(Request $request, $user)
     {
-        return redirect()->route('manajemen.kegiatan.index');
+        return redirect()->route('dashboard');
     }
-
 }

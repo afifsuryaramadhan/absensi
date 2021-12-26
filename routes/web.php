@@ -29,11 +29,15 @@ Auth::routes();
 Route::group(['as' => '', 'prefix' => '/'], function () {
     Route::get('', function () {
         // return redirect()->route('login');
-        return 'Hello World !';
-    });
+        return view('index1');
+    })->name('index');
+
+    Route::get('dashboard', function () {
+        return view('dashboard');
+    })->name('dashboard');
 
     Route::get('back', function () {
-        return redirect()->route('login');
+        return redirect()->route('index');
     })->name('back');
 
 
@@ -103,24 +107,25 @@ Route::group(['as' => '', 'prefix' => '/'], function () {
         });
 
         // Manajemen Jadwal
-        Route::group(['as' => 'kegiatan.', 'prefix' => 'kegiatan/', 'middleware' => 'permission:jadwal'], function () {
-            Route::get('', [KegiatanController::class, 'index'])->name('index');
-            Route::get('show/{id}', [KegiatanController::class, 'show'])->name('show');
+        Route::group(['middleware' => 'can:akses_periode'], function () {
+            Route::group(['as' => 'kegiatan.', 'prefix' => 'kegiatan/', 'middleware' => 'permission:jadwal'], function () {
+                Route::get('', [KegiatanController::class, 'index'])->name('index');
+                Route::get('show/{id}', [KegiatanController::class, 'show'])->name('show');
 
-            Route::group(['middleware' => 'permission:jadwal-create'], function () {
-                Route::get('create', [KegiatanController::class, 'create'])->name('create');
-                Route::post('store', [KegiatanController::class, 'store'])->name('store');
+                Route::group(['middleware' => 'permission:jadwal-create'], function () {
+                    Route::get('create', [KegiatanController::class, 'create'])->name('create');
+                    Route::post('store', [KegiatanController::class, 'store'])->name('store');
+                });
+
+
+                Route::group(['middleware' => 'permission:jadwal-edit'], function () {
+                    Route::get('edit/{id}', [KegiatanController::class, 'edit'])->name('edit');
+                    Route::post('update/{id}', [KegiatanController::class, 'update'])->name('update');
+                });
+
+                Route::middleware('permission:jadwal-delete')->delete('delete/{id}', [KegiatanController::class, 'delete'])->name('delete');
             });
-
-
-            Route::group(['middleware' => 'permission:jadwal-edit'], function () {
-                Route::get('edit/{id}', [KegiatanController::class, 'edit'])->name('edit');
-                Route::post('update/{id}', [KegiatanController::class, 'update'])->name('update');
-            });
-
-            Route::middleware('permission:jadwal-delete')->delete('delete/{id}', [KegiatanController::class, 'delete'])->name('delete');
         });
-
 
         // Manajemen absensi
         Route::group(['as' => 'absensi.', 'prefix' => 'absensi/', 'middleware' => 'permission:absensi-list'], function () {

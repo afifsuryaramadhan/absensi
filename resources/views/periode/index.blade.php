@@ -5,16 +5,20 @@
 @section('content')
 <div class="content-header">
     <div class="container-fluid">
+
       <div class="row mb-2">
+
         <div class="col-sm-6">
           <h1 class="m-0 text-dark">Dashboard</h1>
         </div><!-- /.col -->
+
         <div class="col-sm-6 small-9">
           <ol class="breadcrumb float-sm-right">
             <li class="breadcrumb-item"><a href="#">Absensi</a></li>
             <li class="breadcrumb-item active">index</li>
           </ol>
         </div><!-- /.col -->
+
       </div><!-- /.row -->
 
       {{-- Alert --}}
@@ -22,7 +26,8 @@
           {!! \Session::get('message') !!}
       @endif
 
-<div class="row my-3">
+
+      <div class="row my-3">
   <div class="col-lg col-md-12">
     <div class="card small-9">
       <div class="card-header">
@@ -88,9 +93,35 @@
 
     </div><!-- /.container-fluid -->
 </div>
+</div>
+@endsection
+
+@section('styles')
+  <!-- DataTables -->
+  <link rel="stylesheet" href="{{ asset('admin-lte/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css') }}">
+  <link rel="stylesheet" href="{{ asset('admin-lte/plugins/datatables-responsive/css/responsive.bootstrap4.min.css') }}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css"  />
+  <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
 @endsection
 
 @section('scripts')
+  <script src="{{ asset('js/ujs.min.js') }}"></script>
+  <script src="{{ asset('admin-lte/plugins/datatables/jquery.dataTables.min.js') }}"></script>
+  <script src="{{ asset('admin-lte/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js') }}"></script>
+  <script src="{{ asset('admin-lte/plugins/datatables-responsive/js/dataTables.responsive.min.js') }}"></script>
+  <script src="{{ asset('admin-lte/plugins/datatables-responsive/js/responsive.bootstrap4.min.js') }}"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" ></script>
+  <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
+
+  <script>
+    $(function () {
+      $("#example1").DataTable({
+        "responsive": true,
+        "autoWidth": false,
+      });
+    });
+  </script>
+  
   <script>
       $(function(){
           $('.toggle-class').change(function() {
@@ -109,15 +140,4 @@
           });
       })
   </script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" ></script>
-    {{-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css"  /> --}}
-    <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
-    <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
-
-  <script src="{{ asset('js/ujs.min.js') }}"></script>
-  <script src="{{ asset('admin-lte/plugins/datatables/jquery.dataTables.min.js') }}"></script>
-  <script src="{{ asset('admin-lte/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js') }}"></script>
-  <script src="{{ asset('admin-lte/plugins/datatables-responsive/js/dataTables.responsive.min.js') }}"></script>
-  <script src="{{ asset('admin-lte/plugins/datatables-responsive/js/responsive.bootstrap4.min.js') }}"></script>
-  <script>
 @endsection

@@ -57,8 +57,9 @@ class UserController extends Controller
         $roles = Role::all();
         $univ = Univ::all();
         $divisi = Divisi::all();
+        $periode = Periode::all();
         $user = User::findOrFail($id);
-        return view('manajemen-user.edit', compact('univ', 'divisi', 'user', 'roles'));
+        return view('manajemen-user.edit', compact('univ', 'divisi', 'user', 'roles', 'periode'));
     }
 
     public function show($id)
@@ -80,8 +81,7 @@ class UserController extends Controller
             'email' => $request->email,
             'id_univ' => $request->id_univ,
             'id_divisi' => $request->id_divisi,
-            'tahun_ajar' => $request->tahun_ajar,
-            'status' => $request->status,
+            'id_periode' => $request->id_periode,
         ];
 
         $user = User::findOrFail($id);
