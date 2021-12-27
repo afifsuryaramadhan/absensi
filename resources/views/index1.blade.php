@@ -9,10 +9,10 @@
         <!-- Font Awesome icons (free version)-->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js" crossorigin="anonymous"></script>
         <!-- Core theme CSS (includes Bootstrap)-->
-        <link href="{{ secure_asset('freelancer/css/styles.css') }}" rel="stylesheet">
+        <link href="{{ asset('freelancer/css/styles.css') }}" rel="stylesheet">
         <!-- Fonts CSS-->
-        <link rel="stylesheet" href="{{ secure_asset('freelancer/css/heading.css') }}">
-        <link rel="stylesheet" href="{{ secure_asset('freelancer/css/body.css') }}">
+        <link rel="stylesheet" href="{{ asset('freelancer/css/heading.css') }}">
+        <link rel="stylesheet" href="{{ asset('freelancer/css/body.css') }}">
     </head>
     <body id="page-top">
         <nav class="navbar navbar-expand-lg bg-secondary fixed-top" id="mainNav">
@@ -81,21 +81,21 @@
                         <div class="portfolio-item mx-auto" data-toggle="modal" data-target="#portfolioModal0">
                             <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
                                 <div class="portfolio-item-caption-content text-center text-white"><i class="fas fa-plus fa-3x"></i></div>
-                            </div><img class="img-fluid" src="{{ asset('freelancer/assets/img/portfolio/logo2.png') }}" alt="Universitas Majalengka"/>
+                            </div><img class="img-fluid" src="{{ asset('freelancer/assets/img/portfolio/logo1.png') }}" alt="Universitas Majalengka"/>
                         </div>
                     </div>
                     <div class="col-md-6 col-lg-4 mb-5">
                         <div class="portfolio-item mx-auto" data-toggle="modal" data-target="#portfolioModal1">
                             <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
                                 <div class="portfolio-item-caption-content text-center text-white"><i class="fas fa-plus fa-3x"></i></div>
-                            </div><img class="img-fluid" src="{{ asset('freelancer/assets/img/portfolio/logo1.png') }}" alt="IAI BBC"/>
+                            </div><img class="img-fluid" src="{{ asset('freelancer/assets/img/portfolio/logo2.png') }}" alt="IAI BBC"/>
                         </div>
                     </div>
                     <div class="col-md-6 col-lg-4 mb-5">
                         <div class="portfolio-item mx-auto" data-toggle="modal" data-target="#portfolioModal2">
                             <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
                                 <div class="portfolio-item-caption-content text-center text-white"><i class="fas fa-plus fa-3x"></i></div>
-                            </div><img class="img-fluid" src="{{ asset('freelancer/assets/img/portfolio/circus.png') }}" alt="Circus Tent"/>
+                            </div><img class="img-fluid" src="{{ asset('freelancer/assets/img/portfolio/logo3.jpg') }}" alt="IAI Syekh Nurjati"/>
                         </div>
                     </div>
                     <div class="col-md-6 col-lg-4 mb-5">
@@ -207,14 +207,14 @@
                             <div class="row justify-content-center">
                                 <div class="col-lg-8">
                                     <!-- Portfolio Modal - Title-->
-                                    <h2 class="portfolio-modal-title text-secondary mb-0">Circus Tent</h2>
+                                    <h2 class="portfolio-modal-title text-secondary mb-0">IAI Syekh Nurjati</h2>
                                     <!-- Icon Divider-->
                                     <div class="divider-custom">
                                         <div class="divider-custom-line"></div>
                                         <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
                                         <div class="divider-custom-line"></div>
                                     </div>
-                                    <!-- Portfolio Modal - Image--><img class="img-fluid rounded mb-5" src="{{ asset('freelancer/assets/img/portfolio/circus.png') }}" alt="Circus Tent"/>
+                                    <!-- Portfolio Modal - Image--><img class="img-fluid rounded mb-5" src="{{ asset('freelancer/assets/img/portfolio/logo3.jpg') }}" alt="IAI Syekh Nurjati"/>
                                     <!-- Portfolio Modal - Text-->
                                     <p class="mb-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit.Mollitia neque assumenda ipsam nihil, molestias magnam, recusandae quos quis inventore quisquam velit asperiores, vitae? Reprehenderit soluta, eos quod consequuntur itaque. Nam.</p>
                                     <button class="btn btn-primary" href="#" data-dismiss="modal"><i class="fas fa-times fa-fw"></i>Close Window</button>
@@ -372,9 +372,9 @@
         <!-- Third party plugin JS-->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
         <!-- Contact form JS-->
-        <script src="{{ secure_asset('freelancer/assets/mail/jqBootstrapValidation.js') }}"></script>
-        <script src="{{ secure_asset('freelancer/assets/mail/contact_me.js') }}"></script>
+        <script src="{{ asset('freelancer/assets/mail/jqBootstrapValidation.js') }}"></script>
+        <script src="{{ asset('freelancer/assets/mail/contact_me.js') }}"></script>
         <!-- Core theme JS-->
-        <script src="{{ secure_asset('freelancer/js/scripts.js') }}"></script>
+        <script src="{{ asset('freelancer/js/scripts.js') }}"></script>
     </body>
 </html>
