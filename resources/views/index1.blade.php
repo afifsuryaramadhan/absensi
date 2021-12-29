@@ -9,10 +9,10 @@
         <!-- Font Awesome icons (free version)-->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js" crossorigin="anonymous"></script>
         <!-- Core theme CSS (includes Bootstrap)-->
-        <link href="{{ asset('freelancer/css/styles.css') }}" rel="stylesheet">
+        <link href="{{ secure_asset('freelancer/css/styles.css') }}" rel="stylesheet">
         <!-- Fonts CSS-->
-        <link rel="stylesheet" href="{{ asset('freelancer/css/heading.css') }}">
-        <link rel="stylesheet" href="{{ asset('freelancer/css/body.css') }}">
+        <link rel="stylesheet" href="{{ secure_asset('freelancer/css/heading.css') }}">
+        <link rel="stylesheet" href="{{ secure_asset('freelancer/css/body.css') }}">
     </head>
     <body id="page-top">
         <nav class="navbar navbar-expand-lg bg-secondary fixed-top" id="mainNav">
@@ -372,9 +372,9 @@
         <!-- Third party plugin JS-->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
         <!-- Contact form JS-->
-        <script src="{{ asset('freelancer/assets/mail/jqBootstrapValidation.js') }}"></script>
-        <script src="{{ asset('freelancer/assets/mail/contact_me.js') }}"></script>
+        <script src="{{ secure_asset('freelancer/assets/mail/jqBootstrapValidation.js') }}"></script>
+        <script src="{{ secure_asset('freelancer/assets/mail/contact_me.js') }}"></script>
         <!-- Core theme JS-->
-        <script src="{{ asset('freelancer/js/scripts.js') }}"></script>
+        <script src="{{ secure_asset('freelancer/js/scripts.js') }}"></script>
     </body>
 </html>
