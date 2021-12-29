@@ -87,8 +87,16 @@ class KegiatanController extends Controller
 
     public function delete($id)
     {
+        //make delete relationship with absensi
         $kegiatan = Kegiatan::where('id', $id)->first();
+        $kegiatan->absensi()->delete();
         $kegiatan->delete();
+
+
+
+        // $kegiatan = Kegiatan::where('id', $id)->first();
+        // $kegiatan->delete();
+
         return redirect()->route('manajemen.kegiatan.index')->with('message', '<div class="alert alert-success my-3">Kegiatan ' . $kegiatan->nama_kegiatan . ' berhasil dihapus.</div>');
     }
 }
