@@ -1,7 +1,9 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
+use Illuminate\Routing\RouteGroup;
 
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\KetuaController;
@@ -10,7 +12,7 @@ use App\Http\Controllers\AnggotaController;
 use App\Http\Controllers\PeriodeController;
 use App\Http\Controllers\KegiatanController;
 use App\Http\Controllers\PermissionController;
-use Illuminate\Routing\RouteGroup;
+use App\Http\Controllers\InstagramAuthController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,10 +29,8 @@ use Illuminate\Routing\RouteGroup;
 Auth::routes();
 
 Route::group(['as' => '', 'prefix' => '/'], function () {
-    Route::get('', function () {
-        // return redirect()->route('login');
-        return view('index1');
-    })->name('index');
+    Route::get('', [HomeController::class, 'index'])->name('index');
+    // return redirect()->route('login');
 
     Route::get('dashboard', function () {
         return view('dashboard');
@@ -40,6 +40,7 @@ Route::group(['as' => '', 'prefix' => '/'], function () {
         return redirect()->route('index');
     })->name('back');
 
+    Route::get('instagram-get-auth', [InstagramAuthController::class, 'show'])->name('instagram-get-auth');
 
     Route::group(['as' => 'manajemen.', 'prefix' => 'manajemen/'], function () {
 
