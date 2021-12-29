@@ -15,8 +15,8 @@ class PeriodeSeeder extends Seeder
     public function run()
     {
         Periode::insert([
-            ['periode' => 'Pembina', 'status' => 1],
-            ['periode' => '2021/2022', 'status' => 1],
+            ['periode' => 'Pembina', 'status' => '1'],
+            ['periode' => '2021/2022', 'status' => '1'],
         ]);
     }
 }
