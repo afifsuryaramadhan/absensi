@@ -1,9 +1,10 @@
 @extends('layouts.master-dashboard')
 
-@section('title', 'Manajemen Periode')
+@section('title', 'Sistem Absensi Kegiatan')
+
 
 @section('content')
-<div class="content-header">
+  <div class="content-header">
     <div class="container-fluid">
 
       <div class="row mb-2">
@@ -93,18 +94,16 @@
 
     </div><!-- /.container-fluid -->
 </div>
-</div>
 @endsection
 
 @section('styles')
   <!-- DataTables -->
   <link rel="stylesheet" href="{{ asset('admin-lte/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css') }}">
   <link rel="stylesheet" href="{{ asset('admin-lte/plugins/datatables-responsive/css/responsive.bootstrap4.min.css') }}">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css"  />
-  <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
 @endsection
 
 @section('scripts')
+  <!-- DataTables -->
   <script src="{{ asset('js/ujs.min.js') }}"></script>
   <script src="{{ asset('admin-lte/plugins/datatables/jquery.dataTables.min.js') }}"></script>
   <script src="{{ asset('admin-lte/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js') }}"></script>
@@ -112,7 +111,6 @@
   <script src="{{ asset('admin-lte/plugins/datatables-responsive/js/responsive.bootstrap4.min.js') }}"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" ></script>
   <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
-
   <script>
     $(function () {
       $("#example1").DataTable({
@@ -121,7 +119,6 @@
       });
     });
   </script>
-  
   <script>
       $(function(){
           $('.toggle-class').change(function() {
