@@ -299,13 +299,6 @@
                     <div class="col-lg-4 mr-auto">
                         <p class="pre-wrap lead">You can create your own custom avatar for the masthead, change the icon in the dividers, and add your email address to the contact form to make it fully functional!</p>
                     </div>
-                    <div class="col-lg-4 mr-auto">
-                        <p class="pre-wrap lead">
-                            @foreach ($feed as $item)
-                               <img src="{{ $item['url']}}"> 
-                            @endforeach
-                        </p>
-                    </div>
                 </div>
             </div>
         </section>
