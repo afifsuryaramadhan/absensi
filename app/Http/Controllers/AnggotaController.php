@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\Models\User;
 use App\Models\Univ;
+use App\Models\User;
 use App\Models\Divisi;
+use App\Models\Periode;
+use Illuminate\Http\Request;
 
 class AnggotaController extends Controller
 {
@@ -45,9 +46,8 @@ class AnggotaController extends Controller
             'nama' => 'required',
             'email' => 'required|email|unique:users,email',
             'password' => 'required|min:6',
-            'tahun_ajar' => 'required',
             'id_divisi' => 'required',
-            'status' => 'required',
+            'id_periode' => 'required',
         ]);
 
 
@@ -57,10 +57,9 @@ class AnggotaController extends Controller
             $user->nama = $request->nama;
             $user->email = $request->email;
             $user->password = bcrypt($request->password);
-            $user->tahun_ajar = $request->tahun_ajar;
             $user->id_univ = auth()->user()->id_univ;
             $user->id_divisi = $request->id_divisi;
-            $user->status = $request->status;
+            $user->id_periode = $request->id_periode;
             $user->save();
 
             $user->assignRole('anggota');
@@ -73,10 +72,11 @@ class AnggotaController extends Controller
 
     public function edit($id)
     {
+        $periode = Periode::all();
         $univ = Univ::findOrFail(auth()->user()->id_univ);
         $divisi = Divisi::all();
         $user = User::findOrFail($id);
-        return view('anggota.edit', compact('univ', 'divisi', 'user'));
+        return view('anggota.edit', compact('univ', 'divisi', 'user', 'periode'));
     }
 
     public function show($id)
@@ -91,17 +91,15 @@ class AnggotaController extends Controller
         $request->validate([
             'nama' => 'required',
             'email' => 'required|email|unique:users,email,' . $id,
-            'tahun_ajar' => 'required',
             'id_divisi' => 'required',
-            'status' => 'required',
+            'id_periode' => 'required',
         ]);
 
         $data = [
             'nama' => $request->nama,
             'email' => $request->email,
             'id_divisi' => $request->id_divisi,
-            'tahun_ajar' => $request->tahun_ajar,
-            'status' => $request->status,
+            'id_periode' => $request->id_periode,
         ];
 
         $user = User::findOrFail($id);

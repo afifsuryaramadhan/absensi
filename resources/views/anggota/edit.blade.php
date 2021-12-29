@@ -63,24 +63,18 @@
                             @endforeach
                         </select>
                     </div>
-                    <div class="form-group">
+                   <div class="form-group">
                         <label for="">Periode</label>
-                        <input type="number" name="periode" id="" class="form-control" placeholder="Periode" value="{{ !empty(old('periode')) ? old('periode') : $user->periode->periode }}">
-                    </div>
-                    <div class="form-group">
-                      <label for="">Status</label>
-                      <div class="form-check">
-                        <div class="row">
-                          <div class="col-sm-1">
-                            <input class="form-check-input" type="radio" name="status" id="aktif" value="Aktif" {{ $user->status =='Aktif' ? 'checked' : '' }}>
-                            <label class="form-check-label" for="aktif">Aktif</label>
-                          </div>
-                          <div class="col-sm-1">
-                            <input class="form-check-input" type="radio" name="status" id="non-aktif" value="Tidak aktif" {{ $user->status =='Tidak aktif' ? 'checked' : '' }}>
-                            <label class="form-check-label" for="non-aktif">Tidak Aktif</label>
-                          </div>
-                        </div>
-                      </div>
+                        <select name="id_periode" id="" class="form-control">
+                            <option value="">-- Pilih Periode --</option>
+                            @foreach ($periode as $val)
+                              @if( !empty(old('id_periode')) )
+                                <option value="{{$val->id}}" {{  old('periode')==$val->id ? "selected" : null }} >{{ $val->periode }}</option>
+                              @else
+                                <option value="{{$val->id}}" {{  $user->id_periode==$val->id ? "selected" : null }} >{{ $val->periode }}</option>
+                              @endif
+                            @endforeach
+                        </select>
                     </div>
                     <div class="form-group float-right">
                         <button type="submit" class="btn btn-primary px-3">Simpan</button>
