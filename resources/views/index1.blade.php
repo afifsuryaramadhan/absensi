@@ -9,10 +9,10 @@
         <!-- Font Awesome icons (free version)-->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js" crossorigin="anonymous"></script>
         <!-- Core theme CSS (includes Bootstrap)-->
-        <link href="{{ asset('freelancer/css/styles.css') }}" rel="stylesheet">
+        <link href="//{{ asset('freelancer/css/styles.css') }}" rel="stylesheet">
         <!-- Fonts CSS-->
-        <link rel="stylesheet" href="{{ asset('freelancer/css/heading.css') }}">
-        <link rel="stylesheet" href="{{ asset('freelancer/css/body.css') }}">
+        <link rel="stylesheet" href="//{{ asset('freelancer/css/heading.css') }}">
+        <link rel="stylesheet" href="//{{ asset('freelancer/css/body.css') }}">
     </head>
     <body id="page-top">
         <nav class="navbar navbar-expand-lg bg-secondary fixed-top" id="mainNav">
