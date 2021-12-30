@@ -38,7 +38,7 @@ class AbsensiController extends Controller
         // $file->storeAs('public/foto', $fileName);
 
         $filename = \Str::random(9) . '_' . $request->foto->getClientOriginalName();
-        $path = Storage::putFileAs('public', $request->foto, $filename);
+        $path = Storage::putFileAs('public/absensi', $request->foto, $filename);
 
 
         try {
