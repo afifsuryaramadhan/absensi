@@ -32,8 +32,13 @@ class AbsensiController extends Controller
             'foto' => 'required|mimes:jpg,jpeg,png'
         ]);
 
+        //save file image storage to public
+        // $file = $request->file('foto');
+        // $fileName = $file->getClientOriginalName();
+        // $file->storeAs('public/foto', $fileName);
+
         $filename = \Str::random(9) . '_' . $request->foto->getClientOriginalName();
-        $path = Storage::putFileAs('public/absensi', $request->foto, $filename);
+        $path = Storage::putFileAs('public', $request->foto, $filename);
 
 
         try {
