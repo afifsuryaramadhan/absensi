@@ -16,10 +16,6 @@
    
     <div class="card-body">
       Anda login sebagai <p class="badge badge-info">{{ Auth::user()->nama }}</p>
-      @if(Auth::user()->nama_univ)
-      sebagai mahasiswa <span class="badge badge-info">{{ Auth::user()->univ->nama_univ }}</span><br>
-      Silahkan akses menu untuk melakukan absensi.
-      @endif
     </div><!-- /.card-body -->
 
     <div class="card-footer">
