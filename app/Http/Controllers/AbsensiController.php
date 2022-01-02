@@ -55,7 +55,7 @@ class AbsensiController extends Controller
             return redirect()->back()->withInput()->with('message', '<div class="alert alert-danger my-3">Absensi gagal.</div>');
         }
 
-        return redirect()->route('absensi.index')->with('message', '<div class="alert alert-success my-3">Absensi berhasil, menunggu konfirmasi ketua atau admin</div>');
+        return redirect()->route('absensi.index')->with('message', '<div class="alert alert-success my-3">Absensi berhasil, menunggu konfirmasi ketua atau sekretaris</div>');
     }
 
     public function list()

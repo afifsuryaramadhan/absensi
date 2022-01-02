@@ -35,9 +35,11 @@ class AnggotaController extends Controller
 
     public function create()
     {
+        $periode = Periode::all();
         $univ = Univ::findOrFail(auth()->user()->id_univ);
         $divisi = Divisi::all();
-        return view('anggota.create', compact('univ', 'divisi'));
+        // $user = User::all();
+        return view('anggota.create', compact('univ', 'divisi', 'periode'));
     }
 
     public function store(Request $request)
