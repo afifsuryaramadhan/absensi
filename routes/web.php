@@ -1,7 +1,8 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
+use Illuminate\Routing\RouteGroup;
 
+use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\KetuaController;
@@ -9,8 +10,8 @@ use App\Http\Controllers\AbsensiController;
 use App\Http\Controllers\AnggotaController;
 use App\Http\Controllers\PeriodeController;
 use App\Http\Controllers\KegiatanController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\PermissionController;
-use Illuminate\Routing\RouteGroup;
 
 /*
 |--------------------------------------------------------------------------
@@ -32,9 +33,7 @@ Route::group(['as' => '', 'prefix' => '/'], function () {
         return view('index1');
     })->name('index');
 
-    Route::get('dashboard', function () {
-        return view('dashboard');
-    })->name('dashboard');
+    Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
     Route::get('back', function () {
         return redirect()->route('index');

@@ -4,7 +4,30 @@
 
 
 @section('content')
-    Hello World !
+  <div class="card m-lg-4">
+    <div class="card-header">
+      <h3 class="card-title">Selamat Datang</h3>
+      <div class="card-tools">
+        <!-- Buttons, labels, and many other things can be placed here! -->
+        <!-- Here is a label for example -->
+        <span class="badge badge-primary">Dashboard Page</span>
+      </div><!-- /.card-tools -->
+    </div><!-- /.card-header -->
+   
+    <div class="card-body">
+      Anda login sebagai <p class="badge badge-info">{{ Auth::user()->nama }}</p>
+      @if(Auth::user()->nama_univ)
+      sebagai mahasiswa <span class="badge badge-info">{{ Auth::user()->univ->nama_univ }}</span><br>
+      Silahkan akses menu untuk melakukan absensi.
+      @endif
+    </div><!-- /.card-body -->
+
+    <div class="card-footer">
+      Periode kamu saat ini adalah <p class="badge badge-info">{{ Auth::user()->periode->periode }}</p>
+      dan statusnya adalah <span class="badge badge-{{ Auth::user()->periode->status == '1' ? 'success' : 'dark' }} text-white px-3 py-1">{{ Auth::user()->periode->status == '1' ? 'Aktif' : 'Tidak Aktif' }}</span>
+    </div><!-- /.card-footer -->
+  
+</div><!-- /.card -->
 @endsection
 
 @section('styles')
