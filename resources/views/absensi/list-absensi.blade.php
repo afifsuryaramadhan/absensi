@@ -55,9 +55,19 @@
                           <td class="align-middle">{{ $val->kegiatan->nama_kegiatan }}</td>
                           <td class="align-middle">{{ date('d F Y | H:i', strtotime($val->created_at)) }}</td>
                           <td class="align-middle">
-                            <a href="{{ Storage::url($val->foto) }}">
-                              <img src="{{ Storage::url($val->foto) }}" alt='foto-absensi' height="50px">
+                            {{-- get images from cloudinary --}}
+                            {{-- get url images from cloudinary --}}
+                            <a href="{{ $val->foto }}">
+                            <img src="{{ $val->foto }}" alt="{{ $val->user->nama }}" width="100px">
                             </a>
+
+                            {{-- get images from Min.IO --}}
+                            {{-- <a href="{{ Storage::cloud('minio')->url($val->foto) }}">
+                              <img src="{{ Storage::cloud('minio')->url($val->foto) }}" alt='foto-absensi' height="100px" width="100px">
+                            </a> --}}
+                            {{-- <a href="{{ Storage::url($val->foto) }}">
+                              <img src="{{ Storage::url($val->foto) }}" alt='foto-absensi' height="50px">
+                            </a> --}}
                           </td>
                         </tr>
                       @endforeach

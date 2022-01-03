@@ -2,13 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
+use PDF;
+use App\Models\User;
 use App\Models\Absensi;
 use App\Models\Kegiatan;
-use App\Models\User;
-use PDF;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
+use CloudinaryLabs\CloudinaryLaravel\Facades\Cloudinary;
 
 class AbsensiController extends Controller
 {
@@ -32,13 +33,16 @@ class AbsensiController extends Controller
             'foto' => 'required|mimes:jpg,jpeg,png'
         ]);
 
-        //save file image storage to public
-        // $file = $request->file('foto');
-        // $fileName = $file->getClientOriginalName();
-        // $file->storeAs('public/foto', $fileName);
+        // $filename = \Str::random(9) . '_' . $request->foto->getClientOriginalName();
 
-        $filename = \Str::random(9) . '_' . $request->foto->getClientOriginalName();
-        $path = Storage::putFileAs('public/absensi', $request->foto, $filename);
+        //save images to minio
+        // $path = Storage::cloud('minio')->put('public/absensi', $request->foto, $filename);
+
+        //save images to local
+        // $path = Storage::putFileAs('public/absensi', $request->foto, $filename);
+
+        //save images to cloudinary
+        $path = Cloudinary::upload($request->file('foto')->getRealPath())->getSecurePath();
 
 
         try {

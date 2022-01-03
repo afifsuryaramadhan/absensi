@@ -14,6 +14,7 @@ return [
     */
 
     'default' => env('FILESYSTEM_DRIVER', 'local'),
+    'cloud' => env('FILESYSTEM_CLOUD', 'minio'),
 
     /*
     |--------------------------------------------------------------------------
@@ -51,6 +52,15 @@ return [
             'url' => env('AWS_URL'),
             'endpoint' => env('AWS_ENDPOINT'),
             'use_path_style_endpoint' => env('AWS_USE_PATH_STYLE_ENDPOINT', false),
+        ],
+
+        'minio' => [
+            'driver' => 'minio',
+            'key' => env('MINIO_KEY', '4S4JXHRROS769ZZNIOY3'),
+            'secret' => env('MINIO_SECRET', 'B9FGhzTzw6qMc1mAgQi0sx7pEDgBPCCQRYoWijrY'),
+            'region' => 'us-east-1',
+            'bucket' => env('MINIO_BUCKET', 'my.bucket'),
+            'endpoint' => env('MINIO_ENDPOINT', 'http://localhost:9000')
         ],
 
     ],
