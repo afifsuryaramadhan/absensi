@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Kegiatan;
 use App\Models\Univ;
 use App\Models\User;
+use App\Models\Kegiatan;
 use Illuminate\Http\Request;
+use CloudinaryLabs\CloudinaryLaravel\Facades\Cloudinary;
 
 class KegiatanController extends Controller
 {
@@ -91,11 +92,9 @@ class KegiatanController extends Controller
         $kegiatan = Kegiatan::where('id', $id)->first();
         $kegiatan->absensi()->delete();
         $kegiatan->delete();
+        //delete cloudinary image
+        $kegiatan->deleteCloudinary();
 
-
-
-        // $kegiatan = Kegiatan::where('id', $id)->first();
-        // $kegiatan->delete();
 
         return redirect()->route('manajemen.kegiatan.index')->with('message', '<div class="alert alert-success my-3">Kegiatan ' . $kegiatan->nama_kegiatan . ' berhasil dihapus.</div>');
     }
