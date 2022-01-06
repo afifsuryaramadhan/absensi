@@ -8,6 +8,8 @@ use App\Models\Divisi;
 use App\Models\Periode;
 use Illuminate\Http\Request;
 use Spatie\Permission\Models\Role;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Imports\UserImport;
 
 class UserController extends Controller
 {
@@ -95,5 +97,11 @@ class UserController extends Controller
         $user = User::where('id', $id)->first();
         $user->delete();
         return redirect()->route('manajemen.user.index')->with('message', '<div class="alert alert-success my-3">' . $user->nama . ' berhasil dihapus.</div>');
+    }
+
+    public function import(Request $request)
+    {
+        Excel::Import(new UserImport, $request->file('import_file'));
+        return "Success";
     }
 }

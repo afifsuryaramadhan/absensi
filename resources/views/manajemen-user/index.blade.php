@@ -33,8 +33,46 @@
               <div class="row my-3">
                 <div class="col-md-12">
                   <a href="{{ route('manajemen.user.create') }}" class="btn btn-sm btn-primary text-white"><i class="fas fa-plus"></i> Tambah</a>
+
+                  <form action="{{ route('manajemen.user.import') }}" enctype="multipart/form-data" method="post">
+                  @csrf
+                  <input type="file" name="import_file" />
+                  <button class="btn btn-sm btn-success text-white" type="submit">Import</button>
+                  </form>
+
+                  {{-- <button type="button" class="btn btn-sm btn-success text-white" data-toggle="modal" data-target="#importExcel">
+                    <i class="fas fa-file-import"></i>IMPORT EXCEL
+                  </button>
+                    <!-- Import Excel -->
+                      <div class="modal fade" id="importExcel" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                          <form method="post" action="{{ route('manajemen.user.import') }}" enctype="multipart/form-data">
+                            <div class="modal-content">
+                              <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Import Excel</h5>
+                              </div>
+                              <div class="modal-body">
+                  
+                                {{ csrf_field() }}
+                  
+                                <label>Pilih file excel</label>
+                                <div class="form-group">
+                                  <input type="file" name="file" required="required">
+                                </div>
+                  
+                              </div>
+                              <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                <button type="submit" class="btn btn-primary">Import</button>
+                              </div>
+                            </div>
+                          </form>
+                        </div>
+                      </div> --}}
+ 
+
+
                 </div>
-              </div>
               <div class="row">
                 <div class="col-lg col-md-12">
                   <table id="example1" class="table table-bordered table-hover datatables-responsive">

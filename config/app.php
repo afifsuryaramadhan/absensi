@@ -185,6 +185,9 @@ return [
         //Intervention Image
         Intervention\Image\ImageServiceProvider::class,
 
+        //excel
+        Maatwebsite\Excel\ExcelServiceProvider::class,
+
     ],
 
     /*
@@ -243,6 +246,7 @@ return [
         'PDF' => Barryvdh\DomPDF\Facade::class,
         'Image' => Intervention\Image\Facades\Image::class,
         'Cloudinary' => CloudinaryLabs\CloudinaryLaravel\Facades\Cloudinary::class,
+        'Excel' => Maatwebsite\Excel\Facades\Excel::class,
 
 
     ],

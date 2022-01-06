@@ -74,6 +74,8 @@ Route::group(['as' => '', 'prefix' => '/'], function () {
             Route::get('show/{id}', [UserController::class, 'show'])->name('show');
             Route::post('update/{id}', [UserController::class, 'update'])->name('update');
             Route::delete('delete/{id}', [UserController::class, 'delete'])->name('delete');
+
+            Route::post('import', [UserController::class, 'import'])->name('import');
         });
 
         // Manajemen anggota
