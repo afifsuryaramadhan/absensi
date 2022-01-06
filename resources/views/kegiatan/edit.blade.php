@@ -59,9 +59,16 @@
                             <div class="text-danger">{{ $message }}</div>
                         @enderror
                     </div>
+                    @else
+                      <label for="">Universitas</label>
+                      <input type="text" name="id_univ" id="" class="form-control" value="{{ $univ->nama_univ }}" readonly>
+                      <input type="hidden" name="id_univ" id="" class="form-control" value="{{ $univ->id }}">
+                      @error('id_univ')
+                          <div class="text-danger">{{ $message }}</div>
+                      @enderror
                     @endif
                     <div class="form-group">
-                        <button class="btn btn-primary float-right px-3">Simpan</button>
+                        <button class="btn btn-primary float-right px-3 mt-md-3">Simpan</button>
                     </div>
                 </form>
             </div>

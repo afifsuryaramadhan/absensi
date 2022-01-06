@@ -35,7 +35,7 @@
   </div>
 
   <!-- /.content-wrapper -->
-  <footer class="main-footer">
+  <footer class="main-footer ml-auto">
     <strong>Copyright &copy; 2021 GenBI Cirebon</strong>
   </footer>
 

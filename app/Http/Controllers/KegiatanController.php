@@ -63,7 +63,7 @@ class KegiatanController extends Controller
 
     public function edit($id)
     {
-        $univ = Univ::all();
+        $univ = Univ::first();
         $kegiatan = Kegiatan::where('id', $id)->first();
         return view('kegiatan.edit', compact('kegiatan', 'univ'));
     }

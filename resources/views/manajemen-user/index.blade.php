@@ -30,17 +30,48 @@
               <h5 class="card-title">Data User</h5>
             </div>
             <div class="card-body">
-              <div class="row my-3">
+              <div class="">
                 <div class="col-md-12">
                   <a href="{{ route('manajemen.user.create') }}" class="btn btn-sm btn-primary text-white"><i class="fas fa-plus"></i> Tambah</a>
                   <!-- Import Excel --> 
-                  <form action="{{ route('manajemen.user.import') }}" enctype="multipart/form-data" method="post">
-                  @csrf
-                  <input type="file" name="import_file" />
-                  <button class="btn btn-sm btn-success text-white" type="submit">Import</button>
-                  </form>
+                  <button type="button" class="btn btn-sm btn-success text-white" data-toggle="modal" data-target="#modal-default"><i class="fa fa fa-file-upload"></i> Import
+                  </button>
+                    <!-- Modal dialog -->
+                  <div class="modal fade" id="modal-default">
+                    <div class="modal-dialog">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h4 class="modal-title">Import Data</h4>
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                          </button>
+                        </div>
+                        <form action="{{ route('manajemen.user.import') }}" method="post" enctype="multipart/form-data">
+                          @csrf
+                          <div class="modal-body">
+                            <div class="form-group">
+                              <div>
+                                <h6 class="font-weight-bold">Upload Data Anggota</h4>
+                              </div>
+                              <div>
+                                <input type="file" name="import_file" required />
+                              </div>
+                            </div>
+                          </div>
+                          <div class="modal-footer justify-content-between">
+                            <button type="submit" class="btn btn-block btn-success">Import</button>
+                            {{-- download excel button --}}
+                            <a href="#" class="btn btn-block btn-info"><i class="fa fa-file-download"></i> Download Template</a>
+                          </div>
+                        </form>
+                      </div>
+                      <!-- /.modal-content -->
+                    </div>
+                    <!-- /.modal-dialog -->
+                  </div>
+                  <!-- /.modal -->
                 </div>
-              <div class="row">
+              <div class="row mt-md-3">
                 <div class="col-lg col-md-12">
                   <table id="example1" class="table table-bordered table-hover datatables-responsive">
                     <thead>
