@@ -102,6 +102,6 @@ class UserController extends Controller
     public function import(Request $request)
     {
         Excel::Import(new UserImport, $request->file('import_file'));
-        return "Success";
+        return redirect()->route('manajemen.user.index')->with('message', '<div class="alert alert-success my-3">Data user berhasil diimport.</div>');
     }
 }
