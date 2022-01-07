@@ -51,7 +51,8 @@
                 		<td>{{ $user->periode->periode ?? ''}}</td>
                 	</tr>
                 </table>
-                <a href="{{ route('manajemen.anggota.index') }}" class="btn btn-primary float-right"><i class="fas fa-arrow-circle-left"></i> Kembali</a>
+                <a href="{{ route('dashboard') }}" class="btn btn-primary float-right ml-1"><i class="fas fa-arrow-circle-left"></i> Kembali</a>
+                <a href="{{ route('profil.edit') }}"" class="btn btn-success float-right"><i class="fas fa-edit"></i>Edit</a>
               </div>
               <!-- /.card-body -->
             </div>

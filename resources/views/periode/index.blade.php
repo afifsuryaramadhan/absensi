@@ -57,6 +57,7 @@
                               <tr>
                                 <th>Action</th>
                                 <th>Periode</th>
+                                <th>Kode id</th>
                                 <th>Status</th>
                               </tr>
                             </thead>
@@ -74,6 +75,7 @@
                                 @endcan
                                 
                                   <td class="align-middle">{{ $periodes->periode }}</td>
+                                  <td class="align-middle">{{ $periodes->id }}</td>
                                   <td class="align-middle">
                                   <input data-id="{{$periodes->id}}" class="toggle-class" type="checkbox" data-onstyle="success" data-offstyle="danger" data-toggle="toggle" data-on="Active" data-off="InActive" {{ $periodes->status ? 'checked' : '' }}>
                                   </td>

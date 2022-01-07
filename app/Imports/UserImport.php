@@ -37,6 +37,25 @@ class UserImport implements ToCollection, WithHeadingRow
      */
     public function collection(Collection $collection)
     {
+        //make insert data to database here
+        // $collection->each(function ($row) {
+        //     $univ = $this->univ->where('nama_univ', $row['id_univ'])->first();
+        //     $divisi = $this->divisi->where('nama_divisi', $row['id_divisi'])->first();
+        //     $periode = $this->periode->where('id_periode', $row['id_periode'])->first();
+        //     $user = User::create([
+        //         'nama' => $row['nama'],
+        //         'email' => $row['email'],
+        //         'password' => bcrypt($row['password']),
+        //         'id_univ' => $row['id_univ'],
+        //         'id_divisi' => $row['id_divisi'],
+        //         'id_periode' => $row['id_periode'],
+        //     ]);
+        //     $user->assignRole('anggota');
+        //     $user->univ()->associate($univ);
+        //     $user->divisi()->associate($divisi);
+        //     $user->periode()->associate($periode);
+        // });
+
         foreach ($collection as $row) {
             // $univ = $this->univ->where('nama_univ', $row['nama_univ'])->first();
             // $divisi = $this->divisi->where('nama_divisi', $row['nama_divisi'])->first();

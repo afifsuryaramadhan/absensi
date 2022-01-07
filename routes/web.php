@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\KetuaController;
+use App\Http\Controllers\ProfilController;
 use App\Http\Controllers\AbsensiController;
 use App\Http\Controllers\AnggotaController;
 use App\Http\Controllers\PeriodeController;
@@ -165,5 +166,10 @@ Route::group(['as' => '', 'prefix' => '/'], function () {
                 Route::post('submit', [AbsensiController::class, 'submit'])->name('submit');
             });
         });
+    });
+    Route::group(['as' => 'profil.', 'prefix' => 'profil'], function () {
+        Route::get('', [ProfilController::class, 'index'])->name('index');
+        Route::get('edit', [ProfilController::class, 'edit'])->name('edit');
+        Route::post('update/{id}', [ProfilController::class, 'update'])->name('update');
     });
 });
