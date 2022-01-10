@@ -102,14 +102,14 @@
                         <div class="portfolio-item mx-auto" data-toggle="modal" data-target="#portfolioModal3">
                             <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
                                 <div class="portfolio-item-caption-content text-center text-white"><i class="fas fa-plus fa-3x"></i></div>
-                            </div><img class="img-fluid" src="{{ asset('freelancer/assets/img/portfolio/game.png') }}" alt="Controller"/>
+                            </div><img class="img-fluid" src="{{ asset('freelancer/assets/img/portfolio/logo4.png') }}" alt="Universitas Wiralodra"/>
                         </div>
                     </div>
                     <div class="col-md-6 col-lg-4 mb-5">
                         <div class="portfolio-item mx-auto" data-toggle="modal" data-target="#portfolioModal4">
                             <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
                                 <div class="portfolio-item-caption-content text-center text-white"><i class="fas fa-plus fa-3x"></i></div>
-                            </div><img class="img-fluid" src="{{ asset('freelancer/assets/img/portfolio/safe.png') }}" alt="Locked Safe"/>
+                            </div><img class="img-fluid" src="{{ asset('freelancer/assets/img/portfolio/logo5.png') }}" alt="Universitas Kuningan"/>
                         </div>
                     </div>
                 </div>
@@ -216,7 +216,21 @@
                                     </div>
                                     <!-- Portfolio Modal - Image--><img class="img-fluid rounded mb-5" src="{{ asset('freelancer/assets/img/portfolio/logo3.jpg') }}" alt="IAI Syekh Nurjati"/>
                                     <!-- Portfolio Modal - Text-->
-                                    <p class="mb-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit.Mollitia neque assumenda ipsam nihil, molestias magnam, recusandae quos quis inventore quisquam velit asperiores, vitae? Reprehenderit soluta, eos quod consequuntur itaque. Nam.</p>
+                                    <p class="mb-5">
+                                        <h4 class="mb-4">Social Media</h4>
+                                            <a class="btn btn-outline-silver btn-social mx-1" href="">
+                                                <i class="fab fa-fw fa-facebook-f"></i>
+                                            </a>
+                                            <a class="btn btn-outline-silver btn-social mx-1" href="">
+                                                <i class="fab fa-fw fa-twitter"></i>
+                                            </a>
+                                            <a class="btn btn-outline-silver btn-social mx-1" href="">
+                                                <i class="fab fa-fw fa-linkedin-in"></i>
+                                            </a>
+                                            <a class="btn btn-outline-silver btn-social mx-1" href="">
+                                                <i class="fab fa-fw fa-dribbble"></i>
+                                            </a>
+                                    </p>
                                     <button class="btn btn-primary" href="#" data-dismiss="modal"><i class="fas fa-times fa-fw"></i>Close Window</button>
                                 </div>
                             </div>
@@ -234,16 +248,30 @@
                             <div class="row justify-content-center">
                                 <div class="col-lg-8">
                                     <!-- Portfolio Modal - Title-->
-                                    <h2 class="portfolio-modal-title text-secondary mb-0">Controller</h2>
+                                    <h2 class="portfolio-modal-title text-secondary mb-0">Universitas Wiralodra</h2>
                                     <!-- Icon Divider-->
                                     <div class="divider-custom">
                                         <div class="divider-custom-line"></div>
                                         <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
                                         <div class="divider-custom-line"></div>
                                     </div>
-                                    <!-- Portfolio Modal - Image--><img class="img-fluid rounded mb-5" src="{{ asset('freelancer/assets/img/portfolio/game.png') }}" alt="Controller"/>
+                                    <!-- Portfolio Modal - Image--><img class="img-fluid rounded mb-5" src="{{ asset('freelancer/assets/img/portfolio/logo4.png') }}" alt="Controller"/>
                                     <!-- Portfolio Modal - Text-->
-                                    <p class="mb-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit.Mollitia neque assumenda ipsam nihil, molestias magnam, recusandae quos quis inventore quisquam velit asperiores, vitae? Reprehenderit soluta, eos quod consequuntur itaque. Nam.</p>
+                                    <p class="mb-5">
+                                        <h4 class="mb-4">Social Media</h4>
+                                            <a class="btn btn-outline-silver btn-social mx-1" href="">
+                                                <i class="fab fa-fw fa-facebook-f"></i>
+                                            </a>
+                                            <a class="btn btn-outline-silver btn-social mx-1" href="">
+                                                <i class="fab fa-fw fa-twitter"></i>
+                                            </a>
+                                            <a class="btn btn-outline-silver btn-social mx-1" href="">
+                                                <i class="fab fa-fw fa-linkedin-in"></i>
+                                            </a>
+                                            <a class="btn btn-outline-silver btn-social mx-1" href="">
+                                                <i class="fab fa-fw fa-dribbble"></i>
+                                            </a>
+                                    </p>
                                     <button class="btn btn-primary" href="#" data-dismiss="modal"><i class="fas fa-times fa-fw"></i>Close Window</button>
                                 </div>
                             </div>
@@ -261,16 +289,30 @@
                             <div class="row justify-content-center">
                                 <div class="col-lg-8">
                                     <!-- Portfolio Modal - Title-->
-                                    <h2 class="portfolio-modal-title text-secondary mb-0">Locked Safe</h2>
+                                    <h2 class="portfolio-modal-title text-secondary mb-0">Universitas Kuningan</h2>
                                     <!-- Icon Divider-->
                                     <div class="divider-custom">
                                         <div class="divider-custom-line"></div>
                                         <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
                                         <div class="divider-custom-line"></div>
                                     </div>
-                                    <!-- Portfolio Modal - Image--><img class="img-fluid rounded mb-5" src="{{ asset('freelancer/assets/img/portfolio/safe.png') }}" alt="Locked Safe"/>
+                                    <!-- Portfolio Modal - Image--><img class="img-fluid rounded mb-5" src="{{ asset('freelancer/assets/img/portfolio/logo5.png') }}" alt="Locked Safe"/>
                                     <!-- Portfolio Modal - Text-->
-                                    <p class="mb-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit.Mollitia neque assumenda ipsam nihil, molestias magnam, recusandae quos quis inventore quisquam velit asperiores, vitae? Reprehenderit soluta, eos quod consequuntur itaque. Nam.</p>
+                                    <p class="mb-5">
+                                        <h4 class="mb-4">Social Media</h4>
+                                            <a class="btn btn-outline-silver btn-social mx-1" href="">
+                                                <i class="fab fa-fw fa-facebook-f"></i>
+                                            </a>
+                                            <a class="btn btn-outline-silver btn-social mx-1" href="">
+                                                <i class="fab fa-fw fa-twitter"></i>
+                                            </a>
+                                            <a class="btn btn-outline-silver btn-social mx-1" href="">
+                                                <i class="fab fa-fw fa-linkedin-in"></i>
+                                            </a>
+                                            <a class="btn btn-outline-silver btn-social mx-1" href="">
+                                                <i class="fab fa-fw fa-dribbble"></i>
+                                            </a>
+                                    </p>
                                     <button class="btn btn-primary" href="#" data-dismiss="modal"><i class="fas fa-times fa-fw"></i>Close Window</button>
                                 </div>
                             </div>
