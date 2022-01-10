@@ -64,8 +64,8 @@ class UserImport implements ToCollection, WithHeadingRow
                 'nama' => $row['nama'],
                 'email' => $row['email'],
                 'password' => bcrypt($row['password']),
-                'id_univ' => $row['id_univ'],
-                'id_divisi' => $row['id_divisi'],
+                'id_univ' => Univ::where('nama_univ', $row['universitas'])->first()->id,
+                'id_divisi' => Divisi::where('nama_divisi', $row['divisi'])->first()->id,
                 'id_periode' => $row['id_periode'],
             ];
 
