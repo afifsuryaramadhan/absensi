@@ -57,36 +57,30 @@ class UserImport implements ToCollection, WithHeadingRow
         // });
 
         foreach ($collection as $row) {
-            // $univ = $this->univ->where('nama_univ', $row['nama_univ'])->first();
-            // $divisi = $this->divisi->where('nama_divisi', $row['nama_divisi'])->first();
-            // $periode = $this->periode->where('periode', $row['periode'])->first();
+
             $data = [
                 'nama' => $row['nama'],
                 'email' => $row['email'],
                 'password' => bcrypt($row['password']),
-                'id_univ' => Univ::where('nama_univ', $row['universitas'])->first()->id,
-                'id_divisi' => Divisi::where('nama_divisi', $row['divisi'])->first()->id,
+                'id_univ' => $row['id_univ'],
+                'id_divisi' => $row['id_divisi'],
                 'id_periode' => $row['id_periode'],
             ];
-
             $user = User::create($data);
             $user->assignRole('anggota');
+
+            // //yang berjalan
+            // $data = [
+            //     'nama' => $row['nama'],
+            //     'email' => $row['email'],
+            //     'password' => bcrypt($row['password']),
+            //     'id_univ' => Univ::where('nama_univ', $row['universitas'])->first()->id,
+            //     'id_divisi' => Divisi::where('nama_divisi', $row['divisi'])->first()->id,
+            //     'id_periode' => $row['id_periode'],
+            // ];
+
+            // $user = User::create($data);
+            // $user->assignRole('anggota');
         }
     }
-    // (array $row)
-    // {
-    //     $univ = $this->univ->where('nama_univ', $row['nama_univ'])->first();
-    //     $divisi = $this->divisi->where('nama_divisi', $row['nama_divisi'])->first();
-    //     $periode = $this->periode->where('periode', $row['periode'])->first();
-
-    //     return new User([
-    //         "nama" => $row['nama'],
-    //         "email" => $row['email'],
-    //         "password" => bcrypt($row['password']),
-    //         "id_univ" => $univ->nama_univ ?? NULL,
-    //         "id_divisi" => $divisi->nama_divisi ?? NULL,
-    //         "periode" => $periode->periode ?? NULL,
-
-    //     ]);
-    // }
 }
