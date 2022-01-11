@@ -81,7 +81,7 @@
                         <div class="portfolio-item mx-auto" data-toggle="modal" data-target="#portfolioModal0">
                             <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
                                 <div class="portfolio-item-caption-content text-center text-white"><i class="fas fa-plus fa-3x"></i></div>
-                            </div><img class="img-fluid" src="{{ asset('freelancer/assets/img/portfolio/logo1.png') }}" alt="Universitas Majalengka"/>
+                            </div><img class="img-fluid" src="{{ asset('freelancer/assets/img/portfolio/Logo1.png') }}" alt="Universitas Majalengka"/>
                         </div>
                     </div>
                     <div class="col-md-6 col-lg-4 mb-5">
@@ -102,7 +102,7 @@
                         <div class="portfolio-item mx-auto" data-toggle="modal" data-target="#portfolioModal3">
                             <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
                                 <div class="portfolio-item-caption-content text-center text-white"><i class="fas fa-plus fa-3x"></i></div>
-                            </div><img class="img-fluid" src="{{ asset('freelancer/assets/img/portfolio/logo4.png') }}" alt="Universitas Wiralodra"/>
+                            </div><img class="img-fluid" src="{{ asset('freelancer/assets/img/portfolio/logo3.png') }}" alt="Universitas Wiralodra"/>
                         </div>
                     </div>
                     <div class="col-md-6 col-lg-4 mb-5">
@@ -132,7 +132,7 @@
                                         <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
                                         <div class="divider-custom-line"></div>
                                     </div>
-                                    <!-- Portfolio Modal - Image--><img class="img-fluid rounded mb-5" src="{{ asset('freelancer/assets/img/portfolio/logo1.png') }}" alt="Universitas Majalengka"/>
+                                    <!-- Portfolio Modal - Image--><img class="img-fluid rounded mb-5" src="{{ asset('freelancer/assets/img/portfolio/Logo1.png') }}" alt="Universitas Majalengka"/>
                                     <!-- Portfolio Modal - Text-->
                                     <p class="mb-5">
                                         <h4 class="mb-4">Social Media</h4>
@@ -255,7 +255,7 @@
                                         <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
                                         <div class="divider-custom-line"></div>
                                     </div>
-                                    <!-- Portfolio Modal - Image--><img class="img-fluid rounded mb-5" src="{{ asset('freelancer/assets/img/portfolio/logo4.png') }}" alt="Controller"/>
+                                    <!-- Portfolio Modal - Image--><img class="img-fluid rounded mb-5" src="{{ asset('freelancer/assets/img/portfolio/logo3.png') }}" alt="Controller"/>
                                     <!-- Portfolio Modal - Text-->
                                     <p class="mb-5">
                                         <h4 class="mb-4">Social Media</h4>
