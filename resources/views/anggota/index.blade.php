@@ -47,7 +47,6 @@
                         <th></th>
                         <th>Nama</th>
                         <th>Universitas</th>
-                        <th>Periode</th>
                         <th>Status</th>
                       </tr>
                     </thead>

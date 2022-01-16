@@ -45,16 +45,8 @@
                     @if( auth()->user()->hasRole('admin') )
                     <div class="form-group">
                         <label for="">Universitas</label>
-                        <select name="id_univ" id="" class="form-control">
-                            <option value="">-- Pilih Universitas --</option>
-                            @foreach ($univ as $val)
-                                @if(!empty(old('id_univ')))
-                                    <option value="{{$val->id}}" {{ old('id_univ')==$val->id ? 'selected' : null }}>{{ $val->nama_univ }}</option>
-                                @else
-                                    <option value="{{$val->id}}" {{ $kegiatan->id_univ==$val->id ? 'selected' : null }}>{{ $val->nama_univ }}</option>
-                                @endif
-                            @endforeach
-                        </select>
+                      <input type="text" name="id_univ" id="" class="form-control" value="{{ $univ->nama_univ }}" readonly>
+                      <input type="hidden" name="id_univ" id="" class="form-control" value="{{ $univ->id }}">
                         @error('id_univ')
                             <div class="text-danger">{{ $message }}</div>
                         @enderror

@@ -67,6 +67,15 @@
                         </select>
                     </div>
                     <div class="form-group">
+                        <label for="">Role</label>
+                        <select name="role" id="" class="form-control">
+                            <option value="">-- Pilih Role --</option>
+                            @foreach ($roles as $val)
+                              <option value="{{$val->name}}" {{ old('role')==$val->id ? 'selected' : null }} >{{ $val->name }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <div class="form-group">
                         <label for="">Periode</label>
                         <select name="id_periode" id="" class="form-control">
                             <option value="">-- Pilih Periode --</option>

@@ -7,6 +7,7 @@ use App\Models\User;
 use App\Models\Divisi;
 use App\Models\Periode;
 use Illuminate\Http\Request;
+use Spatie\Permission\Models\Role;
 
 class AnggotaController extends Controller
 {
@@ -38,8 +39,9 @@ class AnggotaController extends Controller
         $periode = Periode::all();
         $univ = Univ::findOrFail(auth()->user()->id_univ);
         $divisi = Divisi::all();
+        $roles = Role::all();
         // $user = User::all();
-        return view('anggota.create', compact('univ', 'divisi', 'periode'));
+        return view('anggota.create', compact('univ', 'divisi', 'periode', 'roles'));
     }
 
     public function store(Request $request)
@@ -64,7 +66,7 @@ class AnggotaController extends Controller
             $user->id_periode = $request->id_periode;
             $user->save();
 
-            $user->assignRole('anggota');
+            $user->assignRole($request->role);
         } catch (Exception $e) {
             return redirect()->back()->with('message', '<div class="alert alert-danger my-3">Input gagal divalidasi.</div>');
         }
