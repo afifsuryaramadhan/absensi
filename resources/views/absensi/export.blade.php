@@ -42,11 +42,10 @@
 						<td ><?= $val->univ->nama_univ ?? '' ?></td>
 						<td class="text-center"><?= $val->kehadiran ?></td>
 						<td>
-							<ol style="margin-left: -20px;  padding-inline-start:0px">
 								<?php foreach ($val->absensi as $row): ?>
-									<li style="margin:5px">{{ $row->kegiatan->nama_kegiatan ?? ''}}</li>
+									{{ $row->kegiatan->nama_kegiatan ?? ''}}
 								<?php endforeach ?>
-							</ol>
+							
 						</td>
 					</tr>
 			<?php endforeach; ?>
