@@ -7,17 +7,6 @@
 		.text-center {
 			text-align: center;
 		}
-		.mb-0 {
-			margin-bottom: 0;
-		}
-		footer {
-			font-size: 0.9rem;
-            position: fixed; 
-            bottom: -60px; 
-            left: 0px; 
-            right: 0px;
-            height: 50px; 
-        }
 	</style>
 </head>
 <body>
@@ -42,10 +31,11 @@
 						<td ><?= $val->univ->nama_univ ?? '' ?></td>
 						<td class="text-center"><?= $val->kehadiran ?></td>
 						<td>
+							<ol style="margin-left: -20px;  padding-inline-start:0px">
 								<?php foreach ($val->absensi as $row): ?>
-									{{ $row->kegiatan->nama_kegiatan ?? ''}}
+									<li style="margin:5px">{{ $row->kegiatan->nama_kegiatan ?? ''}}</li>
 								<?php endforeach ?>
-							
+							</ol>
 						</td>
 					</tr>
 			<?php endforeach; ?>
